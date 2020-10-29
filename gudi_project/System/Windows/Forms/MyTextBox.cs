@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.CodeDom.Compiler;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
@@ -9,22 +10,25 @@ namespace System.Windows.Forms
 
         public override Font Font { get => base.Font; set => base.Font = value; }
 
-        public MyTextBox() : base()
-        {
-            this.SetStyle(ControlStyles.UserPaint, true);
-        }
+        //protected override void OnPaint(PaintEventArgs e)
+        //{
+        //    string showtext = "";
+        //    for (int i = 0; i < Text.Length; i++)
+        //        showtext += PasswordChar.ToString();
+        //    Pen penBorder = new Pen(setColor, 3);
+        //    e.Graphics.DrawRectangle(penBorder, e.ClipRectangle);
+           
 
-        public Color SetColor { get => setColor; set => setColor = value; }
+        //    Rectangle textRec = new Rectangle(e.ClipRectangle.X + 1, e.ClipRectangle.Y + 1, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-
-            Pen penBorder = new Pen(setColor, 3);
-            e.Graphics.DrawRectangle(penBorder, e.ClipRectangle);
-
-            Rectangle textRec = new Rectangle(e.ClipRectangle.X + 1, e.ClipRectangle.Y + 1, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
-            TextRenderer.DrawText(e.Graphics, Text, base.Font, textRec, base.ForeColor, base.BackColor, TextFormatFlags.Default);
-        }
-
+        //    if (showtext.Length == 0)
+        //    {
+        //        TextRenderer.DrawText(e.Graphics, Text, this.Font, textRec, base.ForeColor, base.BackColor, TextFormatFlags.Default);
+        //    }
+        //    else
+        //    {
+        //        TextRenderer.DrawText(e.Graphics, showtext, this.Font, textRec, base.ForeColor, base.BackColor, TextFormatFlags.Default);
+        //    }
+        //}
     }
 }

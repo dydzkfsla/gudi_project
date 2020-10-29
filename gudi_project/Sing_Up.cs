@@ -52,11 +52,11 @@ namespace gudi_project
                 reader.Close();
                 myConn.Close();
             }
-            lbl_code.Visible = tbx_code.Visible = btn_code_check.Visible 
+            lbl_code.Visible = code_color.Visible = btn_code_check.Visible 
                 = lbl_time.Visible= lbl_Count.Visible = false;
 
-            tbx_code.SetColor = tbx_email_name.SetColor = tbx_name.SetColor 
-                = tbx_password.SetColor = tbx_passwordre.SetColor = Color.Red;
+            email_color.BackColor = name_color.BackColor = pwdre_color.BackColor
+                = pwd_color.BackColor = code_color.BackColor = Color.Red;
         }
         #endregion
 
@@ -64,7 +64,7 @@ namespace gudi_project
         private void btn_email_check_Click(object sender, EventArgs e)
         {
             SendEamail();
-
+            code_color.BackColor = Color.Red;
             timer1.Start();
             btn_code_check.Click += btn_code_check_Click;
         }
@@ -82,7 +82,7 @@ namespace gudi_project
             MessageBox.Show(Smail);
             if (Smail == "send mail Ok")
             {
-                lbl_code.Visible = tbx_code.Visible = btn_code_check.Visible
+                lbl_code.Visible = code_color.Visible = btn_code_check.Visible
                    = lbl_time.Visible = lbl_Count.Visible = true;
                 btn_email_check.Text = "재전송";
             }
@@ -94,14 +94,12 @@ namespace gudi_project
         {
             if(tbx_code.Text == code)
             {
-                tbx_email_name.SetColor= tbx_code.SetColor = Color.Black;
-                tbx_email_name.Focus();
-                tbx_code.Focus();
+                email_color.BackColor = code_color.BackColor = Color.Black;
                 btn_email_check.Text = "메일 확인";
                 timer1.Stop();
                 Count = 300;
 
-                lbl_code.Visible = tbx_code.Visible = btn_code_check.Visible
+                lbl_code.Visible = code_color.Visible = btn_code_check.Visible
                = lbl_time.Visible = lbl_Count.Visible = false;
             }
         }
@@ -110,11 +108,9 @@ namespace gudi_project
         #region 이메일 이름 변경 이벤트
         private void tbx_email_name_TextChanged(object sender, EventArgs e)
         {
-            if (tbx_email_name.SetColor == Color.Black)
+            if (email_color.BackColor == Color.Black)
             {
-                tbx_email_name.SetColor = tbx_code.SetColor = Color.Red;
-                tbx_email_name.Focus();
-                tbx_code.Focus();
+                email_color.BackColor = email_color.BackColor = Color.Red;
             }
         }
         #endregion
@@ -143,39 +139,35 @@ namespace gudi_project
             string Text = tbx_password.Text.Trim().Replace(" ", "");
            if (test1.IsMatch(Text))
             {
-                tbx_password.SetColor = Color.Black;
+                pwd_color.BackColor = Color.Black;
                 pen_Yellow.Visible = true;
                 pen_Green.Visible = true;
                 lbl_PwdTest.Text = "안전";
                 TestPwdColor();
-                tbx_password.Focus();
             }
             else if (test2.IsMatch(Text))
             {
-                tbx_password.SetColor = Color.Black;
+                pwd_color.BackColor = Color.Black;
                 pen_Yellow.Visible = true;
                 pen_Green.Visible = false;
                 lbl_PwdTest.Text = "주의";
                 TestPwdColor();
-                tbx_password.Focus();
             }
             else
             {
-                tbx_password.SetColor = Color.Red;
+                pwd_color.BackColor = Color.Red;
                 pen_Yellow.Visible = false;
                 pen_Green.Visible = false;
                 lbl_PwdTest.Text = "경고";
                 TestPwdColor();
-                tbx_password.Focus();
             }
         }
 
         private void TestPwdColor() //비밀번호 확인 박스 색 변경확인
         {
-            if (tbx_passwordre.SetColor == Color.Black)
+            if (pwdre_color.BackColor == Color.Black)
             {
-                tbx_passwordre.SetColor = Color.Red;
-                tbx_passwordre.Focus();
+                pwdre_color.BackColor = Color.Red;
             }
         }
         #endregion
@@ -194,15 +186,13 @@ namespace gudi_project
         #region 패스워드 2차 확인
         private void tbx_passwordre_TextChanged(object sender, EventArgs e)
         {
-            if(tbx_password.SetColor == Color.Black && tbx_password.Text == tbx_passwordre.Text)
+            if(pwd_color.BackColor == Color.Black && tbx_password.Text == tbx_passwordre.Text)
             {
-                tbx_passwordre.SetColor = Color.Black;
-                tbx_passwordre.Focus();
+                pwdre_color.BackColor = Color.Black;
             }
             else
             {
-                tbx_passwordre.SetColor = Color.Red;
-                tbx_passwordre.Focus();
+                pwdre_color.BackColor = Color.Red;
             }
         }
         #endregion
@@ -210,17 +200,20 @@ namespace gudi_project
         #region 이름확인
         private void tbx_name_TextChanged(object sender, EventArgs e)
         {
-            if(tbx_name.Text.Trim().Length > 3)
+            if(tbx_name.Text.Length > 3)
             {
-                tbx_name.SetColor = Color.Red;
-                tbx_name.Focus();
+                name_color.BackColor = Color.Black;
             }
             else
             {
-                tbx_name.SetColor = Color.Black;
-                tbx_name.Focus();
+                name_color.BackColor = Color.Red;
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
