@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Runtime.CompilerServices;
 
 namespace gudi_project
 {
@@ -20,38 +21,32 @@ namespace gudi_project
         private string conn = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString;
         private string code = "11011";
         private int Count = 10;
+
         private Sing_Up()
         {
             InitializeComponent();
         }
 
-        public static void ShowSingUp()
+        public static void ShowSingUp(Form Parent)
         {
             if(Sing_up == null || Sing_up.IsDisposed)
             {
                 Sing_up = new Sing_Up();
                 Sing_up.Show();
+                Sing_up.Owner = Parent;
             }
         }
 
         #region 로딩 
         private void Sing_Up_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection myConn = new MySqlConnection(conn))
-            {
-                string Command = @"select name from code
-                              where code like 'EM%';";
+            CodeDB db = new CodeDB();
+            DataTable dt =  db.getCategoryCode("Email");
+            cbx_email_name.DataSource = dt;
+            cbx_email_name.DisplayMember = "name";
+            cbx_email_name.ValueMember = "name";
+            db.Dispose();
 
-                MySqlCommand command = new MySqlCommand(Command, myConn);
-                myConn.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    cbx_email_name.Items.Add(reader.GetString("name"));
-                }
-                reader.Close();
-                myConn.Close();
-            }
             lbl_code.Visible = code_color.Visible = btn_code_check.Visible 
                 = lbl_time.Visible= lbl_Count.Visible = false;
 
@@ -73,9 +68,19 @@ namespace gudi_project
         {
             StringBuilder builder = new StringBuilder();
             Mail mail = new Mail();
-            builder.Append(tbx_email_name);
+            builder.Append(tbx_email_name.Text);
             builder.Append("@");
             builder.Append(cbx_email_name.Text);
+
+            UserDB db = new UserDB();
+            if (db.UserChack(builder.ToString()))
+            {
+                MessageBox.Show("이미 있는 유저입니다.");
+                db.Dispose();
+                return;
+            }
+            else
+                db.Dispose();
 
             mail.SetToAddress(builder.ToString());
             string Smail = mail.SendEmail("가입 확인 메일", "code: 11011");
@@ -130,7 +135,6 @@ namespace gudi_project
         }
         #endregion
 
-
         #region 패스워드 1차 확인
         private void tbx_password_Test(object sender, EventArgs e)
         {
@@ -173,7 +177,7 @@ namespace gudi_project
         #endregion
 
         #region 공백제거
-        private void tbx_password_Trim(object sender, KeyPressEventArgs e)
+        private void tbx_Trim(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == ' ')
             {
@@ -200,7 +204,7 @@ namespace gudi_project
         #region 이름확인
         private void tbx_name_TextChanged(object sender, EventArgs e)
         {
-            if(tbx_name.Text.Length > 3)
+            if(tbx_name.Text.Length > 2)
             {
                 name_color.BackColor = Color.Black;
             }
@@ -211,9 +215,52 @@ namespace gudi_project
         }
         #endregion
 
+        #region 회원가입 체크
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            bool Chaek = email_color.BackColor == Color.Black &&
+                        pwd_color.BackColor == Color.Black &&
+                        pwdre_color.BackColor == Color.Black &&
+                        pwd_color.BackColor == Color.Black &&
+                        name_color.BackColor == Color.Black &&
+                        chb.Checked;
+            if (Chaek)
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.Append(tbx_email_name.Text.Trim());
+                builder.Append("@");
+                builder.Append(cbx_email_name.Text.Trim());
+
+                UserDB db = new UserDB();
+                bool flag = db.InsertUser(builder.ToString(), tbx_password.Text.Trim(), tbx_name.Text.Trim());
+                db.Dispose();
+                if (!flag)
+                {
+                    MessageBox.Show("유저 입력 실패 다시 시도하여 주십시오.");
+                    return;
+                }
+                MessageBox.Show("회원 가입 성공");
+                Sing_up.Close();
+            }
+            else
+            {
+                return;
+            }
         }
+        #endregion
+
+        #region 닫기
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+
+        #region 클로즈시 실행 : 로그인 페이지 표시
+        private void Sing_Up_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Owner.Show();
+        }
+        #endregion
     }
 }

@@ -18,6 +18,7 @@ namespace gudi_project
         {
             this.sendAddress = new MailAddress(sendMail);
         }
+        
         public void SetToAddress(string toMail)
         {
             try
@@ -46,7 +47,9 @@ namespace gudi_project
                 message = new MailMessage(sendAddress, toAddress)
                 {
                     Subject = subject,      //제목설정
-                    Body = body             //내용설정
+                    Body = body,             //내용설정
+                    SubjectEncoding = Encoding.UTF8,
+                    BodyEncoding = Encoding.UTF8
                 };
                 smtp.Send(message);         //보냄
                 return "send mail Ok";      //정상적으로 보냈으면
