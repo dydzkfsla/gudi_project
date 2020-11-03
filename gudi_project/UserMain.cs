@@ -16,6 +16,7 @@ namespace gudi_project
     {
         private static UserMain frm = null;
         private System.Windows.Forms.UserInfoPanel UserInfoPanel;
+        List<Travel_info> info = null;
         User User = null;
         public static void ShowUserMainFrom(Form Parent, User User)
         {
@@ -35,10 +36,26 @@ namespace gudi_project
 
         private void UserMain_Load(object sender, EventArgs e)
         {
-            CodeDB db = new CodeDB();
-            Event ev = new Event();
-            string state_Name = db.GetCodeName(User.usr_status_code);
-            db.Dispose();
+            Travel_infoDB infoDB = new Travel_infoDB();
+            info = infoDB.MainTravel();
+            if(info != null)
+            {
+                foreach(Travel_info travel in info)
+                {
+                    TabPage tab = new TabPage();
+                    tab.Text = travel.trv_info_name;
+                    tab.Name = travel.trv_info_ID;
+                    if (travel.trv_info_img != null) {
+                        tab.BackgroundImage = Image.FromFile(travel.trv_info_img);
+                        tab.BackgroundImageLayout = ImageLayout.Zoom;
+                    }
+                    tab.Tag = travel;
+                    tbc_MainTrInfo.Controls.Add(tab);
+                }
+            }
+            infoDB.Dispose();
+
+            tbc_MainTrInfo.SelectedIndex = 0;
         }
 
         private void cToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +73,21 @@ namespace gudi_project
             this.UserInfoPanel = new System.Windows.Forms.UserInfoPanel(User);
             this.Controls.Add(this.UserInfoPanel);
             this.UserInfoPanel.BringToFront();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void tbc_MainTrInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Travel_info temp = (Travel_info)tbc_MainTrInfo.SelectedTab.Tag;
+
+            lbl_info_name.Text = temp.trv_info_name;
+            lbl_info_price.Text = temp.trv_info_price + " 만원";
+            lbl_info_start_date.Text = temp.trv_info_start_date;
+            lbl_info_tel.Text = temp.trv_info_tel;
         }
     }
 }

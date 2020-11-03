@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -89,6 +89,7 @@
     <Compile Include="System\Windows\Forms\UserMainPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Travel_infoDB.cs" />
     <Compile Include="UserMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +140,21 @@
     <Folder Include="User\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\access.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\excel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\outlook.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\ppt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\word.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\캡처.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

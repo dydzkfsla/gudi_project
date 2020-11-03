@@ -35,6 +35,8 @@ namespace gudi_project
             string Mas = db.UserLoingChack(tbx_Email.Text.Trim(), tbx_Pwd.Text.Trim());
             if (string.IsNullOrEmpty(Mas))
             {
+                MessageBox.Show("아이디와 비밀번호를 확인해 주세요");
+                db.Dispose();
                 return;
             }
             if(Mas == "UM01")
