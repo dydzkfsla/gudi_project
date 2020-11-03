@@ -16,6 +16,7 @@ namespace gudi_project
     {
         private static UserMain frm = null;
         private System.Windows.Forms.UserInfoPanel UserInfoPanel;
+        private Maintravel_info Maintravel_infoPanel = null;
         List<Travel_info> info = null;
         User User = null;
         public static void ShowUserMainFrom(Form Parent, User User)
@@ -88,6 +89,14 @@ namespace gudi_project
             lbl_info_price.Text = temp.trv_info_price + " 만원";
             lbl_info_start_date.Text = temp.trv_info_start_date;
             lbl_info_tel.Text = temp.trv_info_tel;
+        }
+
+        private void 대표여행지ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Maintravel_infoPanel = new Maintravel_info(info);
+            Maintravel_infoPanel.Location = new Point(0, 30);
+            this.Controls.Add(Maintravel_infoPanel);
+            Maintravel_infoPanel.BringToFront();
         }
     }
 }

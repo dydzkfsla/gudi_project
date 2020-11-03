@@ -47,11 +47,20 @@ namespace gudi_project
             cbx_email_name.ValueMember = "name";
             db.Dispose();
 
-            lbl_code.Visible = code_color.Visible = btn_code_check.Visible 
+            lbl_code.Visible = tbx_code.Visible = btn_code_check.Visible 
                 = lbl_time.Visible= lbl_Count.Visible = false;
 
-            email_color.BackColor = name_color.BackColor = pwdre_color.BackColor
-                = pwd_color.BackColor = code_color.BackColor = Color.Red;
+            tbx_email_name.BackColor = tbx_name.BackColor = tbx_password.BackColor
+                = tbx_password.BackColor = tbx_code.BackColor = Color.Red;
+            tbx_passwordre.SetTextChangedEvent(tbx_passwordre_TextChanged);
+            tbx_email_name.SetTextChangedEvent(tbx_email_name_TextChanged);
+            tbx_password.SetTextChangedEvent(tbx_password_Test);
+            tbx_name.SetTextChangedEvent( tbx_name_TextChanged);
+
+            tbx_password.PasswordChar = '*';
+            tbx_passwordre.PasswordChar = '*';
+
+
         }
         #endregion
 
@@ -59,7 +68,7 @@ namespace gudi_project
         private void btn_email_check_Click(object sender, EventArgs e)
         {
             SendEamail();
-            code_color.BackColor = Color.Red;
+            tbx_code.BackColor = Color.Red;
             timer1.Start();
             btn_code_check.Click += btn_code_check_Click;
         }
@@ -87,7 +96,7 @@ namespace gudi_project
             MessageBox.Show(Smail);
             if (Smail == "send mail Ok")
             {
-                lbl_code.Visible = code_color.Visible = btn_code_check.Visible
+                lbl_code.Visible = tbx_code.Visible = btn_code_check.Visible
                    = lbl_time.Visible = lbl_Count.Visible = true;
                 btn_email_check.Text = "재전송";
             }
@@ -99,12 +108,12 @@ namespace gudi_project
         {
             if(tbx_code.Text == code)
             {
-                email_color.BackColor = code_color.BackColor = Color.Black;
+                tbx_email_name.BackColor = tbx_code.BackColor = Color.Black;
                 btn_email_check.Text = "메일 확인";
                 timer1.Stop();
                 Count = 300;
 
-                lbl_code.Visible = code_color.Visible = btn_code_check.Visible
+                lbl_code.Visible = tbx_code.Visible = btn_code_check.Visible
                = lbl_time.Visible = lbl_Count.Visible = false;
             }
         }
@@ -113,9 +122,9 @@ namespace gudi_project
         #region 이메일 이름 변경 이벤트
         private void tbx_email_name_TextChanged(object sender, EventArgs e)
         {
-            if (email_color.BackColor == Color.Black)
+            if (tbx_email_name.BackColor == Color.Black)
             {
-                email_color.BackColor = email_color.BackColor = Color.Red;
+                tbx_email_name.BackColor = tbx_email_name.BackColor = Color.Red;
             }
         }
         #endregion
@@ -143,7 +152,7 @@ namespace gudi_project
             string Text = tbx_password.Text.Trim().Replace(" ", "");
            if (test1.IsMatch(Text))
             {
-                pwd_color.BackColor = Color.Black;
+                tbx_password.BackColor = Color.Black;
                 pen_Yellow.Visible = true;
                 pen_Green.Visible = true;
                 lbl_PwdTest.Text = "안전";
@@ -151,7 +160,7 @@ namespace gudi_project
             }
             else if (test2.IsMatch(Text))
             {
-                pwd_color.BackColor = Color.Black;
+                tbx_password.BackColor = Color.Black;
                 pen_Yellow.Visible = true;
                 pen_Green.Visible = false;
                 lbl_PwdTest.Text = "주의";
@@ -159,7 +168,7 @@ namespace gudi_project
             }
             else
             {
-                pwd_color.BackColor = Color.Red;
+                tbx_password.BackColor = Color.Red;
                 pen_Yellow.Visible = false;
                 pen_Green.Visible = false;
                 lbl_PwdTest.Text = "경고";
@@ -169,9 +178,9 @@ namespace gudi_project
 
         private void TestPwdColor() //비밀번호 확인 박스 색 변경확인
         {
-            if (pwdre_color.BackColor == Color.Black)
+            if (tbx_passwordre.BackColor == Color.Black)
             {
-                pwdre_color.BackColor = Color.Red;
+                tbx_passwordre.BackColor = Color.Red;
             }
         }
         #endregion
@@ -190,13 +199,13 @@ namespace gudi_project
         #region 패스워드 2차 확인
         private void tbx_passwordre_TextChanged(object sender, EventArgs e)
         {
-            if(pwd_color.BackColor == Color.Black && tbx_password.Text == tbx_passwordre.Text)
+            if(tbx_password.BackColor == Color.Black && tbx_password.Text == tbx_passwordre.Text)
             {
-                pwdre_color.BackColor = Color.Black;
+                tbx_passwordre.BackColor = Color.Black;
             }
             else
             {
-                pwdre_color.BackColor = Color.Red;
+                tbx_passwordre.BackColor = Color.Red;
             }
         }
         #endregion
@@ -206,11 +215,11 @@ namespace gudi_project
         {
             if(tbx_name.Text.Length > 2)
             {
-                name_color.BackColor = Color.Black;
+                tbx_name.BackColor = Color.Black;
             }
             else
             {
-                name_color.BackColor = Color.Red;
+                tbx_name.BackColor = Color.Red;
             }
         }
         #endregion
@@ -218,11 +227,10 @@ namespace gudi_project
         #region 회원가입 체크
         private void button1_Click(object sender, EventArgs e)
         {
-            bool Chaek = email_color.BackColor == Color.Black &&
-                        pwd_color.BackColor == Color.Black &&
-                        pwdre_color.BackColor == Color.Black &&
-                        pwd_color.BackColor == Color.Black &&
-                        name_color.BackColor == Color.Black &&
+            bool Chaek = tbx_email_name.BackColor == Color.Black &&
+                        tbx_password.BackColor == Color.Black &&
+                        tbx_passwordre.BackColor == Color.Black &&
+                        tbx_name.BackColor == Color.Black &&
                         chb.Checked;
             if (Chaek)
             {

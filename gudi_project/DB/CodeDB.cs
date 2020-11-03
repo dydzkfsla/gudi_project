@@ -73,9 +73,11 @@ namespace gudi_project
                 return string.Empty;
             }
         }
-        #endregion 
+        #endregion
 
         #endregion
+
+        #region 파라미터 설정
 
         private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)
         {
@@ -83,6 +85,7 @@ namespace gudi_project
             cmd.Parameters[ParamName].Value = ParamValue;
         }
 
+        #endregion
         public void Dispose()
         {
             conn.Close();

@@ -35,6 +35,7 @@ namespace gudi_project
             conn.Open();
         }
 
+        #region 대표 정보 확인
         public List<Travel_info> MainTravel()
         {
             try
@@ -77,7 +78,16 @@ namespace gudi_project
                 return null;
             }
         }
+        #endregion
 
+        #region 남은 좌석 확인
+        public int getremainderSeat(string bus_ID, string trv_info_ID)
+        {
+            Bus_InfoDB db = new Bus_InfoDB();
+            int Allseat = db.BusSeat(bus_ID);
+
+        }
+        #endregion
 
         public void Dispose()
         {
