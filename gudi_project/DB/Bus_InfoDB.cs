@@ -14,7 +14,7 @@ namespace gudi_project
 
     }
 
-    public class Bus_InfoDB
+    public class Bus_InfoDB : IDisposable
     {
         MySqlConnection conn = null;
         public Bus_InfoDB()
@@ -65,6 +65,10 @@ namespace gudi_project
         }
         #endregion
 
+        public void Dispose()
+        {
+            conn.Dispose();
+        }
 
     }
 }

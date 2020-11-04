@@ -83,9 +83,14 @@ namespace gudi_project
         #region 남은 좌석 확인
         public int getremainderSeat(string bus_ID, string trv_info_ID)
         {
-            Bus_InfoDB db = new Bus_InfoDB();
-            int Allseat = db.BusSeat(bus_ID);
+            Bus_InfoDB Busdb = new Bus_InfoDB();
+            int Allseat = Busdb.BusSeat(bus_ID);
+            Busdb.Dispose();
+            seatDB Seatdb = new seatDB();
+            int SeatCount = Seatdb.SeatList(trv_info_ID).Count;
+            Seatdb.Dispose();
 
+            return Allseat - SeatCount;
         }
         #endregion
 

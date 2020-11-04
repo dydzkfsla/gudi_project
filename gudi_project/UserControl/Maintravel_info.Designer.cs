@@ -41,15 +41,18 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.lbl_Bus_set = new System.Windows.Forms.Label();
             this.tbx_trv_info_data = new System.Windows.Forms.TextBox();
+            this.trv_info_start_date = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(569, 436);
+            this.label9.Location = new System.Drawing.Point(569, 462);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 21);
             this.label9.TabIndex = 36;
@@ -79,12 +82,13 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(197, 380);
+            this.tabControl1.Location = new System.Drawing.Point(199, 391);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(324, 347);
+            this.tabControl1.Size = new System.Drawing.Size(324, 20);
             this.tabControl1.TabIndex = 32;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabPage1
             // 
@@ -92,7 +96,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(316, 321);
+            this.tabPage1.Size = new System.Drawing.Size(316, 0);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "경유지1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -103,7 +107,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(429, 403);
+            this.tabPage2.Size = new System.Drawing.Size(316, 321);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "경유지2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -134,6 +138,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(201, 99);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(310, 280);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
@@ -141,7 +146,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(324, 22);
+            this.label1.Location = new System.Drawing.Point(193, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 45);
             this.label1.TabIndex = 26;
@@ -161,7 +166,7 @@
             this.lbl_Bus_set.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lbl_Bus_set.Location = new System.Drawing.Point(569, 136);
             this.lbl_Bus_set.Name = "lbl_Bus_set";
-            this.lbl_Bus_set.Size = new System.Drawing.Size(80, 21);
+            this.lbl_Bus_set.Size = new System.Drawing.Size(78, 21);
             this.lbl_Bus_set.TabIndex = 38;
             this.lbl_Bus_set.Text = "남은 자리";
             // 
@@ -175,9 +180,34 @@
             this.tbx_trv_info_data.Size = new System.Drawing.Size(235, 141);
             this.tbx_trv_info_data.TabIndex = 39;
             // 
+            // trv_info_start_date
+            // 
+            this.trv_info_start_date.AutoSize = true;
+            this.trv_info_start_date.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.trv_info_start_date.Location = new System.Drawing.Point(689, 136);
+            this.trv_info_start_date.Name = "trv_info_start_date";
+            this.trv_info_start_date.Size = new System.Drawing.Size(58, 21);
+            this.trv_info_start_date.TabIndex = 40;
+            this.trv_info_start_date.Text = "출발일";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Image = global::gudi_project.Properties.Resources.캡처;
+            this.pictureBox2.Location = new System.Drawing.Point(199, 413);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(315, 311);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 41;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.WaitOnLoad = true;
+            // 
             // Maintravel_info
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.trv_info_start_date);
             this.Controls.Add(this.tbx_trv_info_data);
             this.Controls.Add(this.lbl_Bus_set);
             this.Controls.Add(this.treeView1);
@@ -194,6 +224,7 @@
             this.Load += new System.EventHandler(this.Maintravel_info_Load);
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,5 +245,7 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label lbl_Bus_set;
         private System.Windows.Forms.TextBox tbx_trv_info_data;
+        private System.Windows.Forms.Label trv_info_start_date;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

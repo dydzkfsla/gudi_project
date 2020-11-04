@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -48,12 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusDB.cs" />
-    <Compile Include="Bus_InfoDB.cs" />
-    <Compile Include="ColorTextBox.cs">
+    <Compile Include="DB\BusDB.cs" />
+    <Compile Include="DB\Bus_InfoDB.cs" />
+    <Compile Include="TravelDB.cs" />
+    <Compile Include="UserControl\ColorTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ColorTextBox.Designer.cs">
+    <Compile Include="UserControl\ColorTextBox.Designer.cs">
       <DependentUpon>ColorTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\CodeDB.cs" />
@@ -71,10 +72,10 @@
     <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maintravel_info.cs">
+    <Compile Include="UserControl\Maintravel_info.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Maintravel_info.Designer.cs">
+    <Compile Include="UserControl\Maintravel_info.Designer.cs">
       <DependentUpon>Maintravel_info.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -93,7 +94,7 @@
       <DependentUpon>Sing_Up.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="seatDB.cs" />
+    <Compile Include="DB\seatDB.cs" />
     <Compile Include="System\Windows\Forms\MyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -111,13 +112,13 @@
     <Compile Include="UserMain\UserMain.Designer.cs">
       <DependentUpon>UserMain.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ColorTextBox.resx">
+    <EmbeddedResource Include="UserControl\ColorTextBox.resx">
       <DependentUpon>ColorTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maintravel_info.resx">
+    <EmbeddedResource Include="UserControl\Maintravel_info.resx">
       <DependentUpon>Maintravel_info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -156,9 +157,7 @@
   <ItemGroup>
     <None Include="Resources\회원가입.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserPanel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Image\access.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

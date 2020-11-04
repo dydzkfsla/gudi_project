@@ -52,10 +52,6 @@ namespace gudi_project
 
             tbx_email_name.BackColor = tbx_name.BackColor = tbx_password.BackColor
                 = tbx_password.BackColor = tbx_code.BackColor = Color.Red;
-            tbx_passwordre.SetTextChangedEvent(tbx_passwordre_TextChanged);
-            tbx_email_name.SetTextChangedEvent(tbx_email_name_TextChanged);
-            tbx_password.SetTextChangedEvent(tbx_password_Test);
-            tbx_name.SetTextChangedEvent( tbx_name_TextChanged);
 
             tbx_password.PasswordChar = '*';
             tbx_passwordre.PasswordChar = '*';
@@ -270,5 +266,10 @@ namespace gudi_project
             Owner.Show();
         }
         #endregion
+
+        private void tbx_email_name_ColorTextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,25 +28,36 @@ namespace gudi_project
             conn.Open();
         }
 
-        public List<seat> reseat(string trv_info_ID)
+        public List<seat> SeatList(string trv_info_ID)
         {
             List<seat> seats = new List<seat>();
-            MySqlCommand cmd = new MySqlCommand()
+            try
             {
-                Connection = conn,
-                CommandText = @"SELECT count(*) FROM gudi06.seat 
+                MySqlCommand cmd = new MySqlCommand()
+                {
+                    Connection = conn,
+                    CommandText = @"SELECT res_seat_ID, res_ID, res_seat_num FROM seat 
                                 where res_ID = 
                                 (select res_ID from reservation where trv_info_ID = @trv_info_ID);"
-            };
-            setParameters(cmd, MySqlDbType.Int32, "@trv_info_ID", trv_info_ID);
+                };
+                setParameters(cmd, MySqlDbType.Int32, "@trv_info_ID", trv_info_ID);
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlDataReader reader = cmd.ExecuteReader();
 
-            while (reader.Read())
+                while (reader.Read())
+                {
+                    seat seat = new seat();
+                    seat.res_seat_ID = reader.GetInt32("res_seat_ID").ToString();
+                    seat.res_ID = reader.GetInt32("res_ID").ToString();
+                    seat.res_seat_num = reader.GetString("res_seat_num");
+                    seats.Add(seat);
+                }
+
+                return seats;
+            }catch(Exception err)
             {
-                reader.GetInt32("res_seat_ID");
-                reader.GetInt32("res_ID");
-                reader.GetString("res_seat_num");
+                Debug.WriteLine(err.Message);
+                return null;
             }
         }
 

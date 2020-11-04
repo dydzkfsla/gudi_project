@@ -71,9 +71,11 @@ namespace gudi_project
 
         private void 정보수정ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Fromdelete();
             this.UserInfoPanel = new System.Windows.Forms.UserInfoPanel(User);
             this.Controls.Add(this.UserInfoPanel);
             this.UserInfoPanel.BringToFront();
+            this.Tag = UserInfoPanel;
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -81,22 +83,34 @@ namespace gudi_project
 
         }
 
+        private void 대표여행지ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Fromdelete();
+            Maintravel_infoPanel = new Maintravel_info(info);
+            Maintravel_infoPanel.Location = new Point(0, 30);
+            this.Controls.Add(Maintravel_infoPanel);
+            Maintravel_infoPanel.BringToFront();
+            this.Tag = Maintravel_infoPanel;
+        }
+
         private void tbc_MainTrInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             Travel_info temp = (Travel_info)tbc_MainTrInfo.SelectedTab.Tag;
-
             lbl_info_name.Text = temp.trv_info_name;
             lbl_info_price.Text = temp.trv_info_price + " 만원";
             lbl_info_start_date.Text = temp.trv_info_start_date;
             lbl_info_tel.Text = temp.trv_info_tel;
         }
 
-        private void 대표여행지ToolStripMenuItem1_Click(object sender, EventArgs e)
+        #region 이미 다른걸 보고있다면 삭제
+        private void Fromdelete()
         {
-            Maintravel_infoPanel = new Maintravel_info(info);
-            Maintravel_infoPanel.Location = new Point(0, 30);
-            this.Controls.Add(Maintravel_infoPanel);
-            Maintravel_infoPanel.BringToFront();
+            if (this.Tag != null)
+            {
+                this.Controls.Remove((Control)this.Tag);
+                this.Tag = null;
+            }
         }
+        #endregion
     }
 }
