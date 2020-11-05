@@ -33,7 +33,6 @@
             this.내정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.정보수정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ㄴ9ㅇToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.결제내역ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.상품정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.상품리스트ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.대표여행지ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +61,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 5, 0, 5);
-            this.menuStrip1.Size = new System.Drawing.Size(884, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(884, 34);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -71,30 +70,23 @@
             // 
             this.내정보ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.정보수정ToolStripMenuItem,
-            this.ㄴ9ㅇToolStripMenuItem,
-            this.결제내역ToolStripMenuItem});
+            this.ㄴ9ㅇToolStripMenuItem});
             this.내정보ToolStripMenuItem.Name = "내정보ToolStripMenuItem";
-            this.내정보ToolStripMenuItem.Size = new System.Drawing.Size(59, 19);
+            this.내정보ToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.내정보ToolStripMenuItem.Text = "내 정보";
             // 
             // 정보수정ToolStripMenuItem
             // 
             this.정보수정ToolStripMenuItem.Name = "정보수정ToolStripMenuItem";
-            this.정보수정ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.정보수정ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.정보수정ToolStripMenuItem.Text = "정보 수정";
             this.정보수정ToolStripMenuItem.Click += new System.EventHandler(this.정보수정ToolStripMenuItem_Click);
             // 
             // ㄴ9ㅇToolStripMenuItem
             // 
             this.ㄴ9ㅇToolStripMenuItem.Name = "ㄴ9ㅇToolStripMenuItem";
-            this.ㄴ9ㅇToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.ㄴ9ㅇToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ㄴ9ㅇToolStripMenuItem.Text = "예약 정보";
-            // 
-            // 결제내역ToolStripMenuItem
-            // 
-            this.결제내역ToolStripMenuItem.Name = "결제내역ToolStripMenuItem";
-            this.결제내역ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.결제내역ToolStripMenuItem.Text = "결제 내역";
             // 
             // 상품정보ToolStripMenuItem
             // 
@@ -102,26 +94,26 @@
             this.상품리스트ToolStripMenuItem,
             this.대표여행지ToolStripMenuItem1});
             this.상품정보ToolStripMenuItem.Name = "상품정보ToolStripMenuItem";
-            this.상품정보ToolStripMenuItem.Size = new System.Drawing.Size(75, 19);
+            this.상품정보ToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
             this.상품정보ToolStripMenuItem.Text = "상품 정보 ";
             // 
             // 상품리스트ToolStripMenuItem
             // 
             this.상품리스트ToolStripMenuItem.Name = "상품리스트ToolStripMenuItem";
-            this.상품리스트ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.상품리스트ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.상품리스트ToolStripMenuItem.Text = "상품 리스트";
             // 
             // 대표여행지ToolStripMenuItem1
             // 
             this.대표여행지ToolStripMenuItem1.Name = "대표여행지ToolStripMenuItem1";
-            this.대표여행지ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.대표여행지ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.대표여행지ToolStripMenuItem1.Text = "대표 여행지";
             this.대표여행지ToolStripMenuItem1.Click += new System.EventHandler(this.대표여행지ToolStripMenuItem1_Click);
             // 
             // cToolStripMenuItem
             // 
             this.cToolStripMenuItem.Name = "cToolStripMenuItem";
-            this.cToolStripMenuItem.Size = new System.Drawing.Size(67, 19);
+            this.cToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.cToolStripMenuItem.Text = "로그아웃";
             this.cToolStripMenuItem.Click += new System.EventHandler(this.cToolStripMenuItem_Click);
             // 
@@ -131,7 +123,7 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 25.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(12, 38);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(370, 47);
+            this.label9.Size = new System.Drawing.Size(455, 59);
             this.label9.TabIndex = 9;
             this.label9.Text = "국내여행, 떠나볼까요?";
             // 
@@ -156,7 +148,7 @@
             this.lbl_info_start_date.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info_start_date.Location = new System.Drawing.Point(6, 280);
             this.lbl_info_start_date.Name = "lbl_info_start_date";
-            this.lbl_info_start_date.Size = new System.Drawing.Size(87, 32);
+            this.lbl_info_start_date.Size = new System.Drawing.Size(108, 41);
             this.lbl_info_start_date.TabIndex = 7;
             this.lbl_info_start_date.Text = "출발일";
             // 
@@ -166,7 +158,7 @@
             this.lbl_info_tel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info_tel.Location = new System.Drawing.Point(6, 171);
             this.lbl_info_tel.Name = "lbl_info_tel";
-            this.lbl_info_tel.Size = new System.Drawing.Size(142, 32);
+            this.lbl_info_tel.Size = new System.Drawing.Size(176, 41);
             this.lbl_info_tel.TabIndex = 5;
             this.lbl_info_tel.Text = "여행지 이름";
             // 
@@ -176,7 +168,7 @@
             this.lbl_info_name.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info_name.Location = new System.Drawing.Point(6, 56);
             this.lbl_info_name.Name = "lbl_info_name";
-            this.lbl_info_name.Size = new System.Drawing.Size(166, 32);
+            this.lbl_info_name.Size = new System.Drawing.Size(206, 41);
             this.lbl_info_name.TabIndex = 4;
             this.lbl_info_name.Text = "여행테마 이름";
             // 
@@ -186,7 +178,7 @@
             this.lbl_info_price.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info_price.Location = new System.Drawing.Point(6, 395);
             this.lbl_info_price.Name = "lbl_info_price";
-            this.lbl_info_price.Size = new System.Drawing.Size(95, 32);
+            this.lbl_info_price.Size = new System.Drawing.Size(116, 41);
             this.lbl_info_price.TabIndex = 0;
             this.lbl_info_price.Text = "5700원";
             // 
@@ -213,7 +205,7 @@
             // 
             // UserMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(884, 781);
@@ -245,7 +237,6 @@
         private System.Windows.Forms.ToolStripMenuItem 내정보ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 정보수정ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ㄴ9ㅇToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 결제내역ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 상품정보ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 상품리스트ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 대표여행지ToolStripMenuItem1;
