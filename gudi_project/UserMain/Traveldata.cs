@@ -14,7 +14,6 @@ namespace gudi_project
     public partial class Traveldata : Form
     {
         public Travel travel { get; set; }
-        List<Tuple<string, double, double>> tuples = new List<Tuple<string, double, double>>();
         public Traveldata(Travel travel)
         {
             InitializeComponent();
@@ -30,6 +29,15 @@ namespace gudi_project
             string dir = System.IO.Directory.GetCurrentDirectory();
             string path = System.IO.Path.Combine(dir, html);
             webBrowser1.Navigate(path);
+
+            lbl_trv_addr.Text = travel.trv_addr;
+            lbl_trv_name.Text = travel.trv_name;
+            lbl_trv_tel.Text = travel.trv_tel;
+            tbx_trv_data.Text = travel.trv_data;
+            pcb_trv_img.ImageLocation = travel.trv_img.Replace("http", "https");
+
+
+
         }
         private void ShowMap() // 위도, 경도에 해당하는 지역을 지도에 표시
         {

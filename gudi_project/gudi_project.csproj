@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -48,13 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusReservation.Designer.cs">
+      <DependentUpon>BusReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB\BusDB.cs" />
     <Compile Include="DB\Bus_InfoDB.cs" />
     <Compile Include="DB\TravelDB.cs" />
-    <Compile Include="Traveldata.cs">
+    <Compile Include="UserMain\Traveldata.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Traveldata.Designer.cs">
+    <Compile Include="UserMain\Traveldata.Designer.cs">
       <DependentUpon>Traveldata.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\ColorTextBox.cs">
@@ -118,7 +124,11 @@
     <Compile Include="UserMain\UserMain.Designer.cs">
       <DependentUpon>UserMain.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Traveldata.resx">
+    <Compile Include="Util\CommonUtil.cs" />
+    <EmbeddedResource Include="BusReservation.resx">
+      <DependentUpon>BusReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\Traveldata.resx">
       <DependentUpon>Traveldata.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ColorTextBox.resx">

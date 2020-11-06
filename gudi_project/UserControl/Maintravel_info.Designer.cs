@@ -54,7 +54,7 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(535, 458);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(117, 28);
+            this.label9.Size = new System.Drawing.Size(94, 21);
             this.label9.TabIndex = 36;
             this.label9.Text = "경유지 주소";
             // 
@@ -64,7 +64,7 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(535, 417);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 28);
+            this.label8.Size = new System.Drawing.Size(94, 21);
             this.label8.TabIndex = 35;
             this.label8.Text = "경유지 이름";
             // 
@@ -74,7 +74,7 @@
             this.lbl_trv_info_name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_trv_info_name.Location = new System.Drawing.Point(536, 103);
             this.lbl_trv_info_name.Name = "lbl_trv_info_name";
-            this.lbl_trv_info_name.Size = new System.Drawing.Size(117, 28);
+            this.lbl_trv_info_name.Size = new System.Drawing.Size(94, 21);
             this.lbl_trv_info_name.TabIndex = 34;
             this.lbl_trv_info_name.Text = "여행지 이름";
             // 
@@ -94,7 +94,7 @@
             this.lbl_trv_info_price.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_trv_info_price.Location = new System.Drawing.Point(536, 204);
             this.lbl_trv_info_price.Name = "lbl_trv_info_price";
-            this.lbl_trv_info_price.Size = new System.Drawing.Size(52, 28);
+            this.lbl_trv_info_price.Size = new System.Drawing.Size(42, 21);
             this.lbl_trv_info_price.TabIndex = 31;
             this.lbl_trv_info_price.Text = "가격";
             // 
@@ -104,7 +104,7 @@
             this.lbl_trv_info_tel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_trv_info_tel.Location = new System.Drawing.Point(536, 174);
             this.lbl_trv_info_tel.Name = "lbl_trv_info_tel";
-            this.lbl_trv_info_tel.Size = new System.Drawing.Size(149, 28);
+            this.lbl_trv_info_tel.Size = new System.Drawing.Size(121, 21);
             this.lbl_trv_info_tel.TabIndex = 29;
             this.lbl_trv_info_tel.Text = "010-8838-5429";
             // 
@@ -124,7 +124,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(21, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 54);
+            this.label1.Size = new System.Drawing.Size(148, 45);
             this.label1.TabIndex = 26;
             this.label1.Text = "상품정보";
             // 
@@ -142,7 +142,7 @@
             this.lbl_Bus_set.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lbl_Bus_set.Location = new System.Drawing.Point(536, 140);
             this.lbl_Bus_set.Name = "lbl_Bus_set";
-            this.lbl_Bus_set.Size = new System.Drawing.Size(97, 28);
+            this.lbl_Bus_set.Size = new System.Drawing.Size(78, 21);
             this.lbl_Bus_set.TabIndex = 38;
             this.lbl_Bus_set.Text = "남은 자리";
             // 
@@ -162,7 +162,7 @@
             this.trv_info_start_date.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.trv_info_start_date.Location = new System.Drawing.Point(656, 140);
             this.trv_info_start_date.Name = "trv_info_start_date";
-            this.trv_info_start_date.Size = new System.Drawing.Size(72, 28);
+            this.trv_info_start_date.Size = new System.Drawing.Size(58, 21);
             this.trv_info_start_date.TabIndex = 40;
             this.trv_info_start_date.Text = "출발일";
             // 
@@ -197,6 +197,7 @@
             this.button2.TabIndex = 43;
             this.button2.Text = "예약";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 

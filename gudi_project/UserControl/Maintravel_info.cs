@@ -75,6 +75,7 @@ namespace gudi_project
             }
 
         }
+
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
             if (e.TabPage != null)
@@ -103,6 +104,13 @@ namespace gudi_project
                 Traveldata frm = new Traveldata(travel);
                 frm.Show();
             }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Travel_info travel = treeView1.SelectedNode.Tag as Travel_info;
+            BusReservation.ShowBusReservationForm(travel.trv_info_ID);
 
         }
     }
