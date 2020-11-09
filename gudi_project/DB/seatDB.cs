@@ -28,6 +28,7 @@ namespace gudi_project
             conn.Open();
         }
 
+        #region 예약 좌석 확인
         public List<seat> SeatList(string trv_info_ID)
         {
             List<seat> seats = new List<seat>();
@@ -36,9 +37,10 @@ namespace gudi_project
                 MySqlCommand cmd = new MySqlCommand()
                 {
                     Connection = conn,
-                    CommandText = @"SELECT res_seat_ID, res_ID, res_seat_num FROM seat 
-                                where res_ID = 
-                                (select res_ID from reservation where trv_info_ID = @trv_info_ID);"
+                    CommandText = @"SELECT res_seat_ID, S.res_ID, res_seat_num 
+                FROM seat S JOIN reservation R join travel_info T 
+                ON R.trv_info_ID = T.trv_info_ID and R.res_ID = S.res_ID
+                WHERE T.trv_info_ID = @trv_info_ID;"
                 };
                 setParameters(cmd, MySqlDbType.Int32, "@trv_info_ID", trv_info_ID);
 
@@ -60,6 +62,26 @@ namespace gudi_project
                 return null;
             }
         }
+        #endregion
+
+        #region 좌석 추가
+        public void InserSeat(List<seat> seats)
+        {
+            string sql = @"insert into seat(res_ID, res_seat_num) 
+                            values (@res_ID, @res_seat_num);";
+            MySqlCommand cmd = new MySqlCommand()
+            {
+                Connection = conn,
+                CommandText = sql
+            };
+            foreach (seat seat in seats) {
+                cmd.Parameters.Clear();
+                setParameters(cmd, MySqlDbType.Int32, "@res_ID", seat.res_ID);
+                setParameters(cmd, MySqlDbType.VarChar, "@res_seat_num", seat.res_seat_num);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
 
         #region 파라미터 설정
         private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)

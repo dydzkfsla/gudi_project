@@ -86,11 +86,22 @@ namespace gudi_project
         private void 대표여행지ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Fromdelete();
-            Maintravel_infoPanel = new Maintravel_info(info);
+            Maintravel_infoPanel = new Maintravel_info(info, User);
             Maintravel_infoPanel.Location = new Point(0, 30);
             this.Controls.Add(Maintravel_infoPanel);
             Maintravel_infoPanel.BringToFront();
             this.Tag = Maintravel_infoPanel;
+        }
+
+
+        private void ㄴ9ㅇToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Fromdelete();
+            ReservationUser reservationUser = new ReservationUser(User);
+            reservationUser.Location = new Point(0, 20);
+            this.Controls.Add(reservationUser);
+            reservationUser.BringToFront();
+            this.Tag = reservationUser;
         }
 
         private void tbc_MainTrInfo_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,6 +113,7 @@ namespace gudi_project
             lbl_info_tel.Text = temp.trv_info_tel;
         }
 
+
         #region 이미 다른걸 보고있다면 삭제
         private void Fromdelete()
         {
@@ -112,5 +124,6 @@ namespace gudi_project
             }
         }
         #endregion
+
     }
 }

@@ -16,12 +16,13 @@ namespace gudi_project
     public partial class Maintravel_info : UserControl
     {
         public List<Travel_info> info { get; set; }
-        public Maintravel_info(List<Travel_info> Main)
+        User user;
+        public Maintravel_info(List<Travel_info> Main, User user)
         {
             InitializeComponent();
             info = Main;
+            this.user = user;
         }
-
 
         #region 여행지 정보 확인
         private void SetTravel_Info(Travel_info info)
@@ -38,7 +39,6 @@ namespace gudi_project
         }
         #endregion
 
-
         private void Maintravel_info_Load(object sender, EventArgs e)
         {
             SetTravel_Info(info[0]);
@@ -50,18 +50,18 @@ namespace gudi_project
                 treeNode.Tag = temp;
                 treeView1.Nodes.Add(treeNode);
             }
+            TreeNodeMouseClickEventArgs eventArgs = new TreeNodeMouseClickEventArgs(treeView1.Nodes[0], MouseButtons.Right, 2, 0 ,0);
+            treeView1_NodeMouseDoubleClick(null, eventArgs);
+            treeView1.SelectedNode = treeView1.Nodes[0];
         }
 
+        #region 노드 변경, 다른 상품 클릭
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             tabControl1.TabPages.Clear();
             Travel_info temp = (Travel_info)e.Node.Tag;
             TravelDB db = new TravelDB();
-            pictureBox1.Image = Image.FromFile(temp.trv_info_img);
-            lbl_trv_info_name.Text = temp.trv_info_name;
-            lbl_trv_info_tel.Text = temp.trv_info_tel;
-            lbl_trv_info_price.Text = temp.trv_info_price + " 만원";
-            tbx_trv_info_data.Text = temp.trv_info_Data;
+            SetTravel_Info(temp);
             List<Travel> travels =  db.GetTravel(temp.trv_info_ID);
 
 
@@ -74,8 +74,18 @@ namespace gudi_project
                 tabControl1.TabPages.Add(tab);
             }
 
+            TabControlEventArgs tabControlEventArgs = new TabControlEventArgs(tabControl1.TabPages[0], 0, TabControlAction.Selected);
+            tabControl1_Selected(null, tabControlEventArgs);
+            tabControl1.SelectTab(0);
         }
+        #endregion
 
+        #region 탭 페이지 변경시
+        /// <summary>
+        ///  e.TabPage 의 NULL 체크로 삭제중일때 해당 이벤트 본내용이 실행 되지 않게 함
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
             if (e.TabPage != null)
@@ -86,12 +96,16 @@ namespace gudi_project
                 label9.Text = travel.trv_addr;
             }
         }
+        #endregion
 
+        #region 확인
         private void button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+        #endregion
 
+        #region 경유지 정보 확인
         private void button3_Click(object sender, EventArgs e)
         {
             Travel travel = null;
@@ -106,12 +120,33 @@ namespace gudi_project
             }
 
         }
+        #endregion
 
+        #region 예약
         private void button2_Click(object sender, EventArgs e)
         {
             Travel_info travel = treeView1.SelectedNode.Tag as Travel_info;
-            BusReservation.ShowBusReservationForm(travel.trv_info_ID);
+            BusReservation busReservation = new BusReservation(travel);
+            if(busReservation.ShowDialog() == DialogResult.OK)
+            {
+                DataRow[] rows = busReservation.table.Select();
+                List<seat> seats = new List<seat>();
+                
+                foreach(DataRow row in rows)
+                {
+                    seat temp = new seat();
+                    temp.res_seat_num = row["seat"].ToString();
+                    seats.Add(temp);
+                }
 
+                ReservationDB db = new ReservationDB();
+                if(db.InserReservation(travel, seats, user.usr_email))
+                {
+                    MessageBox.Show("성공적으로 예약 되었습니다.");
+                }
+                db.Dispose();
+            }
         }
+        #endregion
     }
 }

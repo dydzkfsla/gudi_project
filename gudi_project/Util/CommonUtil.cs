@@ -25,6 +25,7 @@ namespace gudi_project
                             DataGridViewContentAlignment textAlign = DataGridViewContentAlignment.MiddleLeft)
         {
             DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+            col.Name = dataPropertyName;
             col.HeaderText = headerText;
             col.DataPropertyName = dataPropertyName;
             col.Width = colWidth;
