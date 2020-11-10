@@ -47,7 +47,7 @@ namespace gudi_project
                 trv_info_ID, bus_ID, bus_emp_ID, guid_emp_ID, date_format(trv_info_start_date, '%Y-%m-%d') as trv_info_start_date
                 , trv_info_name, trv_info_img,trv_info_price, trv_info_tel, trv_info_Data
                 from travel_info
-                where  trv_info_start_date > date_format(NOW(), '%y%m%d')
+                where  trv_info_start_date > date_format(NOW(), '%y-%m-%d')
                 order by trv_info_start_date asc limit 5";
                 MySqlDataReader reader = cmd.ExecuteReader();
 

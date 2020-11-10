@@ -33,6 +33,7 @@ namespace gudi_project
             conn.Open();
         }
 
+        #region 예약 추가
         public bool InserReservation(Travel_info travel, List<seat> seats,string usr_email)
         {
             string sql = @"insert reservation(trv_info_ID, usr_email, res_date, res_prce) 
@@ -51,7 +52,7 @@ namespace gudi_project
 
             if(count > 0)
             {
-                string res_ID = GetRes_ID(travel).ToString();
+                string res_ID = GetRes_ID().ToString();
                 foreach (seat seat in seats)
                 {
                     seat.res_ID = res_ID;
@@ -63,30 +64,35 @@ namespace gudi_project
             else
                 return false;
         }
+        #endregion
 
-        #region ID값 확인
-        public int GetRes_ID(Travel_info travel)
+        #region 맨마지막 예약 ID값 확인
+        public int GetRes_ID()
         {
-            string sql = @"select res_ID from reservation where trv_info_ID = @trv_info_ID;";
+            string sql = @"select res_ID from reservation 
+                          order by res_ID desc
+                          limit 1;";
             MySqlCommand cmd = new MySqlCommand() 
             {
                 CommandText = sql,
                 Connection = conn
             };
 
-            setParameters(cmd, MySqlDbType.Int32, "@trv_info_ID", travel.trv_info_ID);
-
             int res_ID = Convert.ToInt32(cmd.ExecuteScalar());
             return res_ID;
         }
         #endregion
 
+        #region 유저를 기반으로 예약된 것을 확인
         public DataTable UsergetRervation(string usr_email)
         {
-            string sql = @"select T.trv_info_ID, usr_name, res_date, res_prce ,T.trv_info_name, trv_info_img
-                            from reservation R join user U join travel_info T
-                            on R.usr_email = U.usr_email and T.trv_info_ID = R.trv_info_ID
-                            where U.usr_email = @usr_email";
+            string sql = @"select 
+                        res_ID, T.trv_info_ID, usr_name,date_format(res_date, '%Y-%m-%d') res_date,T.trv_info_name ,res_prce
+                        ,CAST((res_prce / T.trv_info_price) as signed integer) seat, trv_info_img
+                        from reservation R join user U join travel_info T
+                        on R.usr_email = U.usr_email and T.trv_info_ID = R.trv_info_ID
+                        where U.usr_email = @usr_email
+                        and date_format(trv_info_start_date, '%Y-%m-%d') > now();";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             da.SelectCommand.Parameters.Add("@usr_email", MySqlDbType.VarChar);
             da.SelectCommand.Parameters["@usr_email"].Value = usr_email;
@@ -96,6 +102,37 @@ namespace gudi_project
             return dt;
 
         }
+        #endregion
+
+        #region 삭제
+        public bool DeleteRes(string res_ID)
+        {
+            string sql = "delete from reservation where res_ID = @res_ID;";
+            MySqlCommand cmd = new MySqlCommand()
+            {
+                Connection = conn,
+                CommandText = sql
+            };
+
+            setParameters(cmd, MySqlDbType.Int32, "@res_ID", res_ID);
+
+            int count = cmd.ExecuteNonQuery();
+
+            if (count > 0)
+            {
+                seatDB db = new seatDB();
+                bool result = db.ResDeleteSeat(res_ID);
+                db.Dispose();
+                if (result)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
+        #endregion
 
         #region 파라미터 설정
         private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)

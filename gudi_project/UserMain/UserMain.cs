@@ -17,6 +17,7 @@ namespace gudi_project
         private static UserMain frm = null;
         private System.Windows.Forms.UserInfoPanel UserInfoPanel;
         private Maintravel_info Maintravel_infoPanel = null;
+        private ReservationUser reservationUser = null;
         List<Travel_info> info = null;
         User User = null;
         public static void ShowUserMainFrom(Form Parent, User User)
@@ -87,7 +88,7 @@ namespace gudi_project
         {
             Fromdelete();
             Maintravel_infoPanel = new Maintravel_info(info, User);
-            Maintravel_infoPanel.Location = new Point(0, 30);
+            Maintravel_infoPanel.Location = new Point(0, 20);
             this.Controls.Add(Maintravel_infoPanel);
             Maintravel_infoPanel.BringToFront();
             this.Tag = Maintravel_infoPanel;
@@ -97,8 +98,8 @@ namespace gudi_project
         private void ㄴ9ㅇToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Fromdelete();
-            ReservationUser reservationUser = new ReservationUser(User);
-            reservationUser.Location = new Point(0, 20);
+            reservationUser = new ReservationUser(User);
+            reservationUser.Location = new Point(0, 30);
             this.Controls.Add(reservationUser);
             reservationUser.BringToFront();
             this.Tag = reservationUser;

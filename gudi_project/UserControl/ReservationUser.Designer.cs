@@ -45,30 +45,32 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(24, 571);
+            this.button1.Location = new System.Drawing.Point(24, 648);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 56);
             this.button1.TabIndex = 43;
             this.button1.Text = "확인";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(24, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 470);
+            this.panel1.Size = new System.Drawing.Size(806, 499);
             this.panel1.TabIndex = 44;
             // 
             // ReservationUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ReservationUser";
-            this.Size = new System.Drawing.Size(880, 655);
+            this.Size = new System.Drawing.Size(880, 750);
             this.Load += new System.EventHandler(this.ReservationUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

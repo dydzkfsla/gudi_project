@@ -18,6 +18,9 @@
         var mapContainer = document.getElementById('map'), mapOption = { center: new kakao.maps.LatLng(33.450701, 126.570667), level: 4 };
         var map = new kakao.maps.Map(mapContainer, mapOption);
 
+
+
+
         function moveTo(lat, lng) {
             var loc = new kakao.maps.LatLng(33.00000, 126.00000);
             map.setCenter(loc);
@@ -25,6 +28,26 @@
 
         function panTo(lat, lng) {
             var loc = new kakao.maps.LatLng(lat, lng);
+
+            var circle = new kakao.maps.Circle({
+                center: new kakao.maps.LatLng(lat, lng),  // 원의 중심좌표 입니다 
+                radius: 50, // 미터 단위의 원의 반지름입니다 
+                strokeWeight: 5, // 선의 두께입니다 
+                strokeColor: '#75B8FA', // 선의 색깔입니다
+                strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                strokeStyle: 'dashed', // 선의 스타일 입니다
+                fillColor: '#CFE7FF', // 채우기 색깔입니다
+                fillOpacity: 0.7  // 채우기 불투명도 입니다   
+            }); 
+            var markerPosition = new kakao.maps.LatLng(lat, lng);
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+
+            circle.setMap(map); 
+            marker.setMap(map);
             map.panTo(loc);
         }
 

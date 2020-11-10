@@ -39,6 +39,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lbl_trv_name = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +57,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(422, 28);
+            this.label2.Location = new System.Drawing.Point(422, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 21);
             this.label2.TabIndex = 1;
@@ -65,7 +67,7 @@
             // 
             this.lbl_Start_date.AutoSize = true;
             this.lbl_Start_date.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Start_date.Location = new System.Drawing.Point(509, 28);
+            this.lbl_Start_date.Location = new System.Drawing.Point(497, 63);
             this.lbl_Start_date.Name = "lbl_Start_date";
             this.lbl_Start_date.Size = new System.Drawing.Size(58, 21);
             this.lbl_Start_date.TabIndex = 2;
@@ -116,7 +118,7 @@
             // 
             this.lbl_price.AutoSize = true;
             this.lbl_price.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_price.Location = new System.Drawing.Point(509, 94);
+            this.lbl_price.Location = new System.Drawing.Point(497, 114);
             this.lbl_price.Name = "lbl_price";
             this.lbl_price.Size = new System.Drawing.Size(42, 21);
             this.lbl_price.TabIndex = 8;
@@ -126,7 +128,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(438, 94);
+            this.label7.Location = new System.Drawing.Point(438, 114);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 21);
             this.label7.TabIndex = 7;
@@ -136,7 +138,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(245, 28);
+            this.label8.Location = new System.Drawing.Point(422, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 21);
             this.label8.TabIndex = 9;
@@ -146,17 +148,26 @@
             // 
             this.lbl_trv_name.AutoSize = true;
             this.lbl_trv_name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_trv_name.Location = new System.Drawing.Point(320, 28);
+            this.lbl_trv_name.Location = new System.Drawing.Point(497, 12);
             this.lbl_trv_name.Name = "lbl_trv_name";
             this.lbl_trv_name.Size = new System.Drawing.Size(58, 21);
             this.lbl_trv_name.TabIndex = 10;
             this.lbl_trv_name.Text = "상품명";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(249, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(149, 142);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
             // ResControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_trv_name);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lbl_price);
@@ -169,7 +180,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ResControl";
-            this.Size = new System.Drawing.Size(748, 148);
+            this.Size = new System.Drawing.Size(750, 150);
+            this.Load += new System.EventHandler(this.ResControl_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +201,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbl_trv_name;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

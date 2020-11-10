@@ -83,6 +83,23 @@ namespace gudi_project
         }
         #endregion
 
+        #region 예약 기반 좌석 삭제
+        public bool ResDeleteSeat(string res_ID)
+        {
+            string sql = "delete from seat where res_ID = @res_ID;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.Int32, "@res_ID", res_ID);
+
+            int count = cmd.ExecuteNonQuery();
+
+            if (count > 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+
         #region 파라미터 설정
         private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)
         {
