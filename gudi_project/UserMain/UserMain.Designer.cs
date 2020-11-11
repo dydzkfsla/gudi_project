@@ -78,14 +78,14 @@
             // 정보수정ToolStripMenuItem
             // 
             this.정보수정ToolStripMenuItem.Name = "정보수정ToolStripMenuItem";
-            this.정보수정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.정보수정ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.정보수정ToolStripMenuItem.Text = "정보 수정";
             this.정보수정ToolStripMenuItem.Click += new System.EventHandler(this.정보수정ToolStripMenuItem_Click);
             // 
             // ㄴ9ㅇToolStripMenuItem
             // 
             this.ㄴ9ㅇToolStripMenuItem.Name = "ㄴ9ㅇToolStripMenuItem";
-            this.ㄴ9ㅇToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ㄴ9ㅇToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.ㄴ9ㅇToolStripMenuItem.Text = "예약 정보";
             this.ㄴ9ㅇToolStripMenuItem.Click += new System.EventHandler(this.ㄴ9ㅇToolStripMenuItem_Click);
             // 
@@ -221,6 +221,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserMainFrom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserMain_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserMain_FormClosed);
             this.Load += new System.EventHandler(this.UserMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

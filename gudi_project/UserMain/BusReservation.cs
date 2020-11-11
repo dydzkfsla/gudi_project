@@ -12,7 +12,6 @@ namespace gudi_project
 {
     public partial class BusReservation : Form
     {
-        private static BusReservation frm = null;
         Bus_Info bus_Info;
         List<seat> seats;
         public DataTable table;

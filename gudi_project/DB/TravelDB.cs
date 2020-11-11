@@ -45,8 +45,11 @@ namespace gudi_project
                 MySqlCommand cmd = new MySqlCommand()
                 {
                     Connection = conn,
-                    CommandText = @"select trv_ID, trv_info_ID, trv_name, trv_addr, trv_data, trv_img, trv_tel, trv_lat, trv_lng
-                                from travel where trv_info_ID = @trv_info_ID; "
+                    CommandText = @"select TC.trv_ID, TC.trv_info_ID, trv_name, trv_addr, trv_data, trv_img, trv_tel, trv_lat, trv_lng
+                                from travel T join travel_conn TC JOIN travel_info TI
+                                on T.trv_ID = TC.trv_ID 
+                                AND TC.trv_info_ID = TI.trv_info_ID
+                                where TC.trv_info_ID = @trv_info_ID; "
                 };
                 setParameters(cmd, MySqlDbType.Int32, "@trv_info_ID", trv_info_ID);
 

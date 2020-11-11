@@ -20,6 +20,7 @@ namespace gudi_project
         private ReservationUser reservationUser = null;
         List<Travel_info> info = null;
         User User = null;
+        bool flage = true;
         public static void ShowUserMainFrom(Form Parent, User User)
         {
             if (frm == null || frm.IsDisposed) 
@@ -62,12 +63,22 @@ namespace gudi_project
 
         private void cToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            flage = false;
             this.Close();
         }
 
         private void UserMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Owner.Show();
+            if (flage)
+            {
+                Form form = this.Owner;
+                this.Owner = null;
+                form.Close();
+            }
+            else
+            {
+                this.Owner.Show();
+            }
         }
 
         private void 정보수정ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,5 +137,9 @@ namespace gudi_project
         }
         #endregion
 
+        private void UserMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Form form =   this.Owner;
+        }
     }
 }

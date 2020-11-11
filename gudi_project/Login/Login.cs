@@ -42,7 +42,7 @@ namespace gudi_project
             if(Mas == "UM01")
             {
                 User user = db.GetUser(tbx_Email.Text.Trim(), tbx_Pwd.Text.Trim());
-                UserMain.ShowUserMainFrom(this,user);
+                UserMain.ShowUserMainFrom(this, user);
                 this.Hide();
             }
             else if(Mas == "UM02")
