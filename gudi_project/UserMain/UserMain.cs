@@ -18,6 +18,7 @@ namespace gudi_project
         private System.Windows.Forms.UserInfoPanel UserInfoPanel;
         private Maintravel_info Maintravel_infoPanel = null;
         private ReservationUser reservationUser = null;
+        private AllTravel allTravel  = null;
         List<Travel_info> info = null;
         User User = null;
         bool flage = true;
@@ -99,12 +100,21 @@ namespace gudi_project
         {
             Fromdelete();
             Maintravel_infoPanel = new Maintravel_info(info, User);
-            Maintravel_infoPanel.Location = new Point(0, 20);
+            Maintravel_infoPanel.Location = new Point(0, 30);
             this.Controls.Add(Maintravel_infoPanel);
             Maintravel_infoPanel.BringToFront();
             this.Tag = Maintravel_infoPanel;
         }
 
+        private void 상품리스트ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Fromdelete();
+            allTravel = new AllTravel(User);
+            allTravel.Location = new Point(0, 30);
+            this.Controls.Add(allTravel);
+            allTravel.BringToFront();
+            this.Tag = allTravel;
+        }
 
         private void ㄴ9ㅇToolStripMenuItem_Click(object sender, EventArgs e)
         {

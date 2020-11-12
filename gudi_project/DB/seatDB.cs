@@ -74,11 +74,20 @@ namespace gudi_project
                 Connection = conn,
                 CommandText = sql
             };
-            foreach (seat seat in seats) {
-                cmd.Parameters.Clear();
-                setParameters(cmd, MySqlDbType.Int32, "@res_ID", seat.res_ID);
-                setParameters(cmd, MySqlDbType.VarChar, "@res_seat_num", seat.res_seat_num);
-                cmd.ExecuteNonQuery();
+            MySqlTransaction transaction = conn.BeginTransaction();
+            try
+            {
+                foreach (seat seat in seats)
+                {
+                    cmd.Parameters.Clear();
+                    setParameters(cmd, MySqlDbType.Int32, "@res_ID", seat.res_ID);
+                    setParameters(cmd, MySqlDbType.VarChar, "@res_seat_num", seat.res_seat_num);
+                    cmd.ExecuteNonQuery();
+                }
+                transaction.Commit();
+            }catch(Exception err)
+            {
+                transaction.Rollback();
             }
         }
         #endregion

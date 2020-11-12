@@ -47,7 +47,8 @@ namespace gudi_project
             }
             else if(Mas == "UM02")
             {
-                MessageBox.Show("관리자 로그인");
+                Master_Mainfrm.Master_MainfrmShow(this);
+                this.Hide();
             }
             db.Dispose();
         }

@@ -48,6 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Master\Master_Mainfrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Master_Mainfrm.Designer.cs">
+      <DependentUpon>Master_Mainfrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\AllTravel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\AllTravel.Designer.cs">
+      <DependentUpon>AllTravel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Travel_info_data.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\Travel_info_data.Designer.cs">
+      <DependentUpon>Travel_info_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\ResControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +156,15 @@
       <DependentUpon>UserMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\CommonUtil.cs" />
+    <EmbeddedResource Include="Master\Master_Mainfrm.resx">
+      <DependentUpon>Master_Mainfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\AllTravel.resx">
+      <DependentUpon>AllTravel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\Travel_info_data.resx">
+      <DependentUpon>Travel_info_data.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ResControl.resx">
       <DependentUpon>ResControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -78,7 +78,58 @@ namespace gudi_project
                 return null;
             }
         }
+
+        public List<Travel_info> MainTravel(string from_date, string to_date)
+        {
+            try
+            {
+                List<Travel_info> Infos = new List<Travel_info>();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = @"
+                    SELECT trv_info_ID, bus_ID, bus_emp_ID, guid_emp_ID, trv_info_start_date, trv_info_name, trv_info_price, trv_info_img, trv_info_tel, trv_info_Data
+                    FROM gudi06.travel_info
+                    where trv_info_start_date > @from_date
+                    and trv_info_start_date< @to_date;";
+
+
+                setParameters(cmd, MySqlDbType.VarChar, "@from_date", from_date);
+                setParameters(cmd, MySqlDbType.VarChar, "@to_date", to_date);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+                    Travel_info temp = new Travel_info();
+                    temp.trv_info_ID = reader.GetString("trv_info_ID");
+                    temp.bus_ID = reader.GetString("bus_ID");
+                    temp.bus_emp_ID = reader.GetString("bus_emp_ID");
+                    temp.guid_emp_ID = reader.GetString("guid_emp_ID");
+                    temp.trv_info_start_date = reader.GetString("trv_info_start_date");
+                    temp.trv_info_name = reader.GetString("trv_info_name");
+                    temp.trv_info_price = reader.GetString("trv_info_price");
+                    temp.trv_info_img = reader.GetString("trv_info_img");
+                    temp.trv_info_tel = reader.GetString("trv_info_tel");
+                    temp.trv_info_Data = reader.GetString("trv_info_Data");
+
+                    Infos.Add(temp);
+                }
+                if (Infos.Count > 0)
+                    return Infos;
+                else
+                    return null;
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+                return null;
+            }
+        }
+
         #endregion
+
+
 
         #region 남은 좌석 확인
         public int getremainderSeat(string bus_ID, string trv_info_ID)
@@ -91,6 +142,14 @@ namespace gudi_project
             Seatdb.Dispose();
 
             return Allseat - SeatCount;
+        }
+        #endregion
+
+        #region 파라미터 설정
+        private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)
+        {
+            cmd.Parameters.Add(ParamName, type);
+            cmd.Parameters[ParamName].Value = ParamValue;
         }
         #endregion
 

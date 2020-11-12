@@ -103,6 +103,7 @@
             this.상품리스트ToolStripMenuItem.Name = "상품리스트ToolStripMenuItem";
             this.상품리스트ToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.상품리스트ToolStripMenuItem.Text = "상품 리스트";
+            this.상품리스트ToolStripMenuItem.Click += new System.EventHandler(this.상품리스트ToolStripMenuItem_Click);
             // 
             // 대표여행지ToolStripMenuItem1
             // 
@@ -113,6 +114,7 @@
             // 
             // cToolStripMenuItem
             // 
+            this.cToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.cToolStripMenuItem.Name = "cToolStripMenuItem";
             this.cToolStripMenuItem.Size = new System.Drawing.Size(67, 19);
             this.cToolStripMenuItem.Text = "로그아웃";
@@ -206,8 +208,7 @@
             // 
             // UserMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(884, 781);
             this.Controls.Add(this.pictureBox1);
@@ -216,6 +217,7 @@
             this.Controls.Add(this.tbc_MainTrInfo);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
