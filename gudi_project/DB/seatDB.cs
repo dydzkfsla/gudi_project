@@ -62,6 +62,42 @@ namespace gudi_project
                 return null;
             }
         }
+
+
+        public List<seat> SeatListRes(string res_ID)
+        {
+            List<seat> seats = new List<seat>();
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand()
+                {
+                    Connection = conn,
+                    CommandText = @"SELECT res_seat_ID, S.res_ID, res_seat_num 
+                FROM seat S JOIN reservation R
+                on R.res_ID = S.res_ID
+                WHERE R.res_ID = @res_ID"
+                };
+                setParameters(cmd, MySqlDbType.Int32, "@res_ID", res_ID);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    seat seat = new seat();
+                    seat.res_seat_ID = reader.GetInt32("res_seat_ID").ToString();
+                    seat.res_ID = reader.GetInt32("res_ID").ToString();
+                    seat.res_seat_num = reader.GetString("res_seat_num");
+                    seats.Add(seat);
+                }
+
+                return seats;
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+                return null;
+            }
+        }
         #endregion
 
         #region 좌석 추가

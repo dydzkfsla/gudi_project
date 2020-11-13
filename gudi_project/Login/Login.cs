@@ -32,6 +32,7 @@ namespace gudi_project
         private void btn_Login_Click(object sender, EventArgs e)
         {
             UserDB db = new UserDB();
+             Font fn =label1.Font;
             string Mas = db.UserLoingChack(tbx_Email.Text.Trim(), tbx_Pwd.Text.Trim());
             if (string.IsNullOrEmpty(Mas))
             {

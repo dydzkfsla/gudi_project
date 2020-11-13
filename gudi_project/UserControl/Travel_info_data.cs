@@ -38,7 +38,7 @@ namespace gudi_project
             pictureBox1.ImageLocation = info.trv_info_img.Replace("http", "https");
 
             CommonUtil.SetInitGridView(dataGridView1);
-            CommonUtil.AddGridTextColumn(dataGridView1, "경유지", "trv_name");
+            CommonUtil.AddGridTextColumn(dataGridView1, "경유지", "trv_name", 200);
             TravelDB db = new TravelDB();
             dataGridView1.DataSource = db.GetTravel(info.trv_info_ID);
             db.Dispose();

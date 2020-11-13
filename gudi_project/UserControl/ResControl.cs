@@ -31,6 +31,13 @@ namespace gudi_project
             lbl_trv_name.Text = row["trv_info_name"].ToString();
             pictureBox1.ImageLocation = row["trv_info_img"].ToString().Replace("http", "https");
             lbl_seat.Text = row["seat"].ToString();
+            seatDB db = new seatDB();
+            CommonUtil.SetInitGridView(dataGridView1);
+            CommonUtil.AddGridTextColumn(dataGridView1, "예약좌석", "res_seat_num");
+            dataGridView1.DataSource =  db.SeatListRes(row["res_ID"].ToString());
+            db.Dispose();
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
