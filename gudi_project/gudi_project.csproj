@@ -54,6 +54,7 @@
     <Compile Include="Master\Master_Mainfrm.Designer.cs">
       <DependentUpon>Master_Mainfrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Travel_connDB.cs" />
     <Compile Include="UserControl\AllTravel.cs">
       <SubType>UserControl</SubType>
     </Compile>
