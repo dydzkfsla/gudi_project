@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace gudi_project
 {
@@ -32,10 +33,11 @@ namespace gudi_project
 
         private void Travel_info_data_Load(object sender, EventArgs e)
         {
+            MemoryStream ms = new MemoryStream(info.trv_info_img, 0, info.trv_info_img.Length);
             lbl_trv_name.Text = info.trv_info_name;
             lbl_Start_date.Text = info.trv_info_start_date;
             lbl_price.Text = info.trv_info_price;
-            pictureBox1.ImageLocation = info.trv_info_img.Replace("http", "https");
+            pictureBox1.Image = Image.FromStream(ms);
 
             CommonUtil.SetInitGridView(dataGridView1);
             CommonUtil.AddGridTextColumn(dataGridView1, "경유지", "trv_name", 200);

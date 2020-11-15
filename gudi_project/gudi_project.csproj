@@ -33,7 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -48,13 +53,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeData.cs">
+      <DependentUpon>CodeData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CodeData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodeData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code_Mast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Code_Mast.Designer.cs">
+      <DependentUpon>Code_Mast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommonExcel.cs" />
+    <Compile Include="iTalk Theme - C#.cs" />
     <Compile Include="Master\Master_Mainfrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Master\Master_Mainfrm.Designer.cs">
       <DependentUpon>Master_Mainfrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Travel_connDB.cs" />
+    <Compile Include="DB\Travel_connDB.cs" />
     <Compile Include="UserControl\AllTravel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +178,9 @@
       <DependentUpon>UserMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\CommonUtil.cs" />
+    <EmbeddedResource Include="Code_Mast.resx">
+      <DependentUpon>Code_Mast.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\Master_Mainfrm.resx">
       <DependentUpon>Master_Mainfrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +231,17 @@
     <EmbeddedResource Include="UserMain\UserMain.resx">
       <DependentUpon>UserMain.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CodeData.xsc">
+      <DependentUpon>CodeData.xsd</DependentUpon>
+    </None>
+    <None Include="CodeData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CodeData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CodeData.xss">
+      <DependentUpon>CodeData.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -227,21 +262,6 @@
     <Folder Include="MAP\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image\access.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\excel.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\outlook.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\ppt.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Image\word.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="kakaoMap.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

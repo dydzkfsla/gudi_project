@@ -22,6 +22,7 @@ namespace gudi_project
 
         private void AllTravel_Load(object sender, EventArgs e)
         {
+            dtp_to_date.MinDate = dtp_to_date.Value = dtp_from_date.MinDate = DateTime.Now;
             dtp_to_date.Value = dtp_from_date.Value.AddMonths(6);
             LoadData();
         }

@@ -27,7 +27,9 @@ namespace gudi_project
         #region 여행지 정보 확인
         private void SetTravel_Info(Travel_info info)
         {
-            pictureBox1.Image = Image.FromFile(info.trv_info_img);
+            ImageConverter imageConverter = new ImageConverter();
+            MemoryStream ms = new MemoryStream(info.trv_info_img, 0, info.trv_info_img.Length);
+            pictureBox1.Image = Image.FromStream(ms);
             lbl_trv_info_name.Text = info.trv_info_name;
             lbl_trv_info_tel.Text = info.trv_info_tel;
             lbl_trv_info_price.Text = info.trv_info_price + " 만원";

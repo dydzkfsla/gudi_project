@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -49,8 +50,9 @@ namespace gudi_project
                     TabPage tab = new TabPage();
                     tab.Text = travel.trv_info_name;
                     tab.Name = travel.trv_info_ID;
+                    MemoryStream ms = new MemoryStream(travel.trv_info_img, 0, travel.trv_info_img.Length);
                     if (travel.trv_info_img != null) {
-                        tab.BackgroundImage = Image.FromFile(travel.trv_info_img);
+                        tab.BackgroundImage = Image.FromStream(ms);
                         tab.BackgroundImageLayout = ImageLayout.Zoom;
                     }
                     tab.Tag = travel;

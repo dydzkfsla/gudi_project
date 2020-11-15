@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,29 @@ namespace gudi_project
 {
     public class CommonUtil
     {
+
+
+        public static void BindingComboBox(ComboBox cbo, DataTable dt, string valueMember, string displayMember, bool blankItemAdd = true)
+        {
+            if (blankItemAdd)
+            {
+                DataRow dr = dt.NewRow();
+                dr[valueMember] = "";
+                dr[displayMember] = "";
+                dt.Rows.InsertAt(dr, 0);
+                dt.AcceptChanges();
+            }
+
+            cbo.ValueMember = valueMember;
+            cbo.DisplayMember = displayMember;
+            cbo.DataSource = dt;
+        }
+
         public static void SetInitGridView(DataGridView dgv)
         {
             dgv.AutoGenerateColumns = false;
             dgv.AllowUserToAddRows = false;
-            //dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         public static void AddGridTextColumn(

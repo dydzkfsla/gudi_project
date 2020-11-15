@@ -19,7 +19,7 @@ namespace gudi_project
         public string  trv_info_start_date   {get; set;}
         public string  trv_info_name         {get; set;}
         public string  trv_info_price        {get; set;}
-        public string  trv_info_img          {get; set;}
+        public byte[]  trv_info_img          {get; set;}
         public string  trv_info_tel          {get; set;}
         public string  trv_info_Data          {get; set;}
     }
@@ -44,8 +44,8 @@ namespace gudi_project
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = @"select 
-                trv_info_ID, bus_ID, bus_emp_ID, guid_emp_ID, date_format(trv_info_start_date, '%Y-%m-%d') as trv_info_start_date
-                , trv_info_name, trv_info_img,trv_info_price, trv_info_tel, trv_info_Data
+                trv_info_img, trv_info_ID, bus_ID, bus_emp_ID, guid_emp_ID, date_format(trv_info_start_date, '%Y-%m-%d') as trv_info_start_date
+                , trv_info_name,trv_info_price, trv_info_tel, trv_info_Data
                 from travel_info
                 where  trv_info_start_date > date_format(NOW(), '%y-%m-%d')
                 order by trv_info_start_date asc limit 5";
@@ -61,7 +61,7 @@ namespace gudi_project
                     temp.trv_info_start_date = reader.GetString("trv_info_start_date");
                     temp.trv_info_name = reader.GetString("trv_info_name");
                     temp.trv_info_price = reader.GetString("trv_info_price");
-                    temp.trv_info_img = reader.GetString("trv_info_img");
+                    temp.trv_info_img = (byte[])reader.GetValue(0);
                     temp.trv_info_tel = reader.GetString("trv_info_tel");
                     temp.trv_info_Data = reader.GetString("trv_info_Data");
 
@@ -87,7 +87,7 @@ namespace gudi_project
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = @"
-                    SELECT trv_info_ID, bus_ID, bus_emp_ID, guid_emp_ID, trv_info_start_date, trv_info_name, trv_info_price, trv_info_img, trv_info_tel, trv_info_Data
+                    SELECT  trv_info_img, trv_info_ID, bus_ID, bus_emp_ID, guid_emp_ID, trv_info_start_date, trv_info_name, trv_info_price, trv_info_tel, trv_info_Data
                     FROM gudi06.travel_info
                     where trv_info_start_date > @from_date
                     and trv_info_start_date< @to_date;";
@@ -109,7 +109,7 @@ namespace gudi_project
                     temp.trv_info_start_date = reader.GetString("trv_info_start_date");
                     temp.trv_info_name = reader.GetString("trv_info_name");
                     temp.trv_info_price = reader.GetString("trv_info_price");
-                    temp.trv_info_img = reader.GetString("trv_info_img");
+                    temp.trv_info_img = (byte[])reader.GetValue(0);
                     temp.trv_info_tel = reader.GetString("trv_info_tel");
                     temp.trv_info_Data = reader.GetString("trv_info_Data");
 

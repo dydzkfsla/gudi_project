@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 
@@ -15,7 +16,7 @@ namespace gudi_project
         public string code { get; set; }
         public string name { get; set; }
         public string category { get; set; }
-        public string stringpcode { get; set; }
+        public string pcode { get; set; }
     }
 
     public class CodeDB : IDisposable
@@ -30,7 +31,28 @@ namespace gudi_project
         }
 
         #region 코드 확인
-        
+
+        #region  모든 코드값
+        public DataTable getAllCode()
+        {
+            try
+            {
+                string sql = "SELECT code, name, category, pcode FROM code";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                int count = da.Fill(dt);
+                if (count == 0)
+                    return null;
+                return dt;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
         #region  카테고리 기준
         public DataTable getCategoryCode(string category)
         {
@@ -77,6 +99,123 @@ namespace gudi_project
 
         #endregion
 
+        #region 코드 변경
+        #region DataTable 기반 변경
+        public void DtCodeSet(DataTable dt)
+        {
+            DataRow[] rows = dt.Select(null, null, DataViewRowState.Added);
+            foreach (DataRow dr in rows)
+            {
+                Code item = SetCode(dr);
+                Insert(item);
+            }
+
+            rows = dt.Select(null, null, DataViewRowState.ModifiedCurrent);
+            foreach (DataRow dr in rows)
+            {
+                Code item = SetCode(dr);
+                Update(item);
+            }
+
+            rows = dt.Select(null, null, DataViewRowState.Deleted);
+            foreach (DataRow dr in rows)
+            {
+                Delete(dr["code", DataRowVersion.Original].ToString());
+            }
+        }
+
+        public void ImportExlCodeSet(DataTable dt)
+        {
+
+            using (MySqlTransaction transaction = conn.BeginTransaction())
+            {
+                MySqlCommand cmd = new MySqlCommand()
+                {
+                    CommandText = "delete from code;",
+                    Connection = conn
+                };
+
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "insert into code(code, name, category, pcode) values (@code, @name,@category, @pcode);";
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    cmd.Parameters.Clear();
+                    Code code = SetCode(row);
+                    setParameters(cmd, MySqlDbType.VarChar, "@code", code.code);
+                    setParameters(cmd, MySqlDbType.VarChar, "@name", code.name);
+                    setParameters(cmd, MySqlDbType.VarChar, "@category", code.category);
+                    setParameters(cmd, MySqlDbType.VarChar, "@pcode", code.pcode);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                transaction.Commit();
+            }
+
+        }
+
+        #endregion
+
+        #region class 기반 변경
+        public void Insert(Code item)
+        {
+            string sql = "insert into code(code, name, category, pcode) values (@code , @name, @category, @pcode);";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.VarChar, "@code", item.code);
+            setParameters(cmd, MySqlDbType.VarChar, "@name", item.name);
+            setParameters(cmd, MySqlDbType.VarChar, "@category", item.category);
+            setParameters(cmd, MySqlDbType.VarChar, "@pcode", item.pcode);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public void Update(Code item)
+        {
+            string sql = @"update code set name =  @name 
+              , category = @category
+              , pcode = @pcode
+              where code = @code;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.VarChar, "@code", item.code);
+            setParameters(cmd, MySqlDbType.VarChar, "@name", item.name);
+            setParameters(cmd, MySqlDbType.VarChar, "@category", item.category);
+            setParameters(cmd, MySqlDbType.VarChar, "@pcode", item.pcode);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public void Delete(string item)
+        {
+            string sql = @"delete from code where code = @code;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.VarChar, "@code", item);
+
+            cmd.ExecuteNonQuery();
+        }
+        #endregion
+
+        #endregion
+
+
+
+        #region Row to Class
+        public Code SetCode(DataRow dr)
+        {
+            return new Code()
+            {
+                code = dr["code"].ToString(),
+                name = dr["name"].ToString(),
+                category = dr["category"].ToString(),
+                pcode = dr["pcode"].ToString()
+            };
+        }
+        #endregion
+
         #region 파라미터 설정
 
         private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)
@@ -86,6 +225,8 @@ namespace gudi_project
         }
 
         #endregion
+        
+        
         public void Dispose()
         {
             conn.Close();
