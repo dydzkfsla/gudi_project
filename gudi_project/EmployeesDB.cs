@@ -20,7 +20,7 @@ namespace gudi_project
         public string emp_dep_code { get; set; }
 
     }
-    public class EmployeesDB
+    public class EmployeesDB : IDisposable
     {
         MySqlConnection conn;
         public EmployeesDB()
@@ -30,6 +30,11 @@ namespace gudi_project
                 ConnectionString = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString
             };
             conn.Open();
+        }
+
+        public void Dispose()
+        {
+            conn.Dispose();
         }
 
         #region 직원 정보 Select

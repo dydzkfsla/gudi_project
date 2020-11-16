@@ -16,7 +16,7 @@ namespace gudi_project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Code_Mast());
+            Application.Run(new Employees_Mast());
         }
     }
 }
