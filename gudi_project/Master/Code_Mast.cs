@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace gudi_project
     public partial class Code_Mast : Form
     {
         DataTable dt = null;
+        CheckBox delete = null;
         public Code_Mast()
         {
             InitializeComponent();
@@ -25,12 +27,14 @@ namespace gudi_project
         {
             CommonUtil.SetInitGridView(dataGridView1);
             //code, name, category, pcode
+            CommonUtil.AddGridCheckColumn(dataGridView1,"    Delete", "Delete",  100);
             CommonUtil.AddGridTextColumn(dataGridView1, "code", "code", 80);
             CommonUtil.AddGridTextColumn(dataGridView1, "name", "name", 220);
             CommonUtil.AddGridTextColumn(dataGridView1, "category", "category", 130);
             CommonUtil.AddGridTextColumn(dataGridView1, "pcode", "pcode", 80);
             cbx_pcode.DisplayMember = "code";
             cbx_pcode.ValueMember = "code";
+
 
             CommonUtil.SetInitGridView(dataGridView2);
             //code, name, category, pcode
@@ -47,7 +51,10 @@ namespace gudi_project
         {
             CodeDB db = new CodeDB();
             dt = db.getAllCode();
-            DataView dv = db.getAllCode().AsDataView();
+            DataTable temp = db.getAllCode();
+            if (temp == null)
+                return;
+            DataView dv = temp.AsDataView();
             DataRow row = dv.Table.NewRow();
             row["code"] = string.Empty;
             row["pcode"] = string.Empty;
@@ -58,6 +65,23 @@ namespace gudi_project
             dt.AcceptChanges();
             dv.Table.AcceptChanges();
             db.Dispose();
+
+
+
+            int x = dataGridView1.Rows[0].Cells[0].ContentBounds.X;
+            int y = dataGridView1.Rows[0].Cells[0].ContentBounds.Y;
+            delete = new CheckBox();
+            delete.Name = "delete";
+            delete.Size = new System.Drawing.Size(20, 20);
+            delete.Location = new System.Drawing.Point(x+ 55,y+ 10);
+            tabPage1.Controls.Add(delete);
+            delete.BringToFront();
+            delete.CheckedChanged += Delete_CheckedChanged;
+
+            foreach(DataGridViewRow rw in dataGridView1.Rows)
+            {
+                rw.Cells[0].Value = false;
+            }
         }
 
         #region 이벤트
@@ -145,7 +169,6 @@ namespace gudi_project
 
         #endregion
 
-
         #region 코드 추가
         private void btn_Add_Click(object sender, EventArgs e)
         {
@@ -173,17 +196,21 @@ namespace gudi_project
         #region 코드 삭제
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (DataRow row in dt.Rows)
+            List<Code> lscode = new List<Code>(); 
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if (row["code"].ToString() == tbx_code.Text)
+                if ( (bool)((DataGridViewCheckBoxCell)row.Cells["Delete"]).Value  == true)
                 {
-                    CodeDB db = new CodeDB();
-                    Code code = db.SetCode(row);
-                    db.Delete(code.code);
-                    dataLoad();
-                    return;
+                    Code code = new Code();
+                    code.code = (string)row.Cells["code"].Value;
+                    lscode.Add(code);
                 }
             }
+
+            CodeDB db = new CodeDB();
+            db.Delete(lscode);
+            db.Dispose();
+            dataLoad();
         }
         #endregion
 
@@ -208,8 +235,38 @@ namespace gudi_project
         }
         #endregion
 
+        #region 메인 체크박스 체크
+        private void Delete_CheckedChanged(object sender, EventArgs e)
+        {
+            bool result = ((CheckBox)sender).Checked;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                ((DataGridViewCheckBoxCell)row.Cells["Delete"]).Value = result;
+            }
+        }
         #endregion
 
+        #region 딜리트 개별 체크 시 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            int col = e.ColumnIndex;
+            if (e.RowIndex != -1)
+            {
+                if (e.ColumnIndex == 0)
+                {
+                    if (delete.Checked)
+                    {
+                        delete.CheckedChanged -= Delete_CheckedChanged;
+                        delete.Checked = false;
+                        delete.CheckedChanged += Delete_CheckedChanged;
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region 엑셀 반영
         private void button8_Click(object sender, EventArgs e)
         {
             DataTable Exdt = (DataTable)dataGridView2.DataSource;
@@ -219,5 +276,9 @@ namespace gudi_project
             db.ImportExlCodeSet(Exdt);
             dataLoad();
         }
+        #endregion
+
+        #endregion
+
     }
 }

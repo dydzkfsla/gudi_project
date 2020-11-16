@@ -127,14 +127,15 @@ namespace gudi_project
         public void ImportExlCodeSet(DataTable dt)
         {
 
-            using (MySqlTransaction transaction = conn.BeginTransaction())
-            {
+            MySqlTransaction transaction = conn.BeginTransaction();
                 MySqlCommand cmd = new MySqlCommand()
                 {
                     CommandText = "delete from code;",
-                    Connection = conn
+                    Connection = conn,
+                    Transaction = transaction
                 };
-
+            try
+            {
                 cmd.ExecuteNonQuery();
 
                 cmd.CommandText = "insert into code(code, name, category, pcode) values (@code, @name,@category, @pcode);";
@@ -152,6 +153,10 @@ namespace gudi_project
                 }
 
                 transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
             }
 
         }
@@ -196,6 +201,29 @@ namespace gudi_project
             setParameters(cmd, MySqlDbType.VarChar, "@code", item);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public void Delete(List<Code> item)
+        {
+           MySqlTransaction Transaction = conn.BeginTransaction();
+
+            string sql = @"delete from code where code = @code;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.Transaction = Transaction;
+            try
+            {
+                foreach (Code code in item)
+                {
+                    cmd.Parameters.Clear();
+                    setParameters(cmd, MySqlDbType.VarChar, "@code", code.code);
+                    cmd.ExecuteNonQuery();
+                }
+                Transaction.Commit();
+            }
+            catch (Exception err)
+            {
+                Transaction.Rollback();
+            }
         }
         #endregion
 

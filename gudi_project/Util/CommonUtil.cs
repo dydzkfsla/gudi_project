@@ -54,5 +54,24 @@ namespace gudi_project
 
             dgv.Columns.Add(col);
         }
+
+
+        public static void AddGridCheckColumn(
+                                DataGridView dgv,
+                                string headerText,
+                                string dataPropertyName,
+                                int colWidth = 100,
+                                bool visibility = true,
+                                DataGridViewContentAlignment textAlign = DataGridViewContentAlignment.MiddleLeft)
+        {
+            DataGridViewCheckBoxColumn col = new DataGridViewCheckBoxColumn();
+            col.Name = dataPropertyName;
+            col.HeaderText = headerText;
+            col.Width = colWidth;
+            col.DefaultCellStyle.Alignment = textAlign;
+            col.Visible = visibility;
+            dgv.Columns.Add(col);
+        }
     }
 }
+

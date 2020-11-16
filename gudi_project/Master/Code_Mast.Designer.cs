@@ -84,7 +84,7 @@
             this.iTalk_TabControl1.Multiline = true;
             this.iTalk_TabControl1.Name = "iTalk_TabControl1";
             this.iTalk_TabControl1.SelectedIndex = 0;
-            this.iTalk_TabControl1.Size = new System.Drawing.Size(1124, 729);
+            this.iTalk_TabControl1.Size = new System.Drawing.Size(1090, 678);
             this.iTalk_TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.iTalk_TabControl1.TabIndex = 0;
             // 
@@ -96,7 +96,7 @@
             this.tabPage1.Location = new System.Drawing.Point(139, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(981, 721);
+            this.tabPage1.Size = new System.Drawing.Size(947, 670);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "코드 리스트";
             // 
@@ -125,8 +125,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Resize += new System.EventHandler(this.splitContainer1_Panel2_Resize);
-            this.splitContainer1.Size = new System.Drawing.Size(975, 715);
-            this.splitContainer1.SplitterDistance = 738;
+            this.splitContainer1.Size = new System.Drawing.Size(941, 664);
+            this.splitContainer1.SplitterDistance = 713;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -138,8 +138,9 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(738, 715);
+            this.dataGridView1.Size = new System.Drawing.Size(713, 664);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // button4
@@ -255,7 +256,7 @@
             this.tabPage2.Location = new System.Drawing.Point(139, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(981, 721);
+            this.tabPage2.Size = new System.Drawing.Size(947, 670);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "코드 엑셀";
             // 
@@ -282,8 +283,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.label7);
             this.splitContainer2.Panel2.Controls.Add(this.label8);
             this.splitContainer2.Panel2.Resize += new System.EventHandler(this.splitContainer1_Panel2_Resize);
-            this.splitContainer2.Size = new System.Drawing.Size(975, 715);
-            this.splitContainer2.SplitterDistance = 699;
+            this.splitContainer2.Size = new System.Drawing.Size(941, 664);
+            this.splitContainer2.SplitterDistance = 682;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 2;
             // 
@@ -295,7 +296,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(699, 715);
+            this.dataGridView2.Size = new System.Drawing.Size(682, 664);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
             // 
@@ -304,9 +305,9 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(8, 358);
+            this.button5.Location = new System.Drawing.Point(8, 307);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(241, 36);
+            this.button5.Size = new System.Drawing.Size(206, 36);
             this.button5.TabIndex = 13;
             this.button5.Text = "엑셀 import";
             this.button5.UseVisualStyleBackColor = true;
@@ -320,17 +321,17 @@
             this.cbx_xls_pcode.FormattingEnabled = true;
             this.cbx_xls_pcode.Location = new System.Drawing.Point(5, 269);
             this.cbx_xls_pcode.Name = "cbx_xls_pcode";
-            this.cbx_xls_pcode.Size = new System.Drawing.Size(244, 33);
+            this.cbx_xls_pcode.Size = new System.Drawing.Size(209, 33);
             this.cbx_xls_pcode.TabIndex = 10;
             // 
             // button8
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button8.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(8, 422);
+            this.button8.Location = new System.Drawing.Point(8, 371);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(132, 36);
+            this.button8.Size = new System.Drawing.Size(174, 36);
             this.button8.TabIndex = 9;
             this.button8.Text = "저장";
             this.button8.UseVisualStyleBackColor = true;
@@ -343,7 +344,7 @@
             this.tbx_xls_category.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbx_xls_category.Location = new System.Drawing.Point(5, 188);
             this.tbx_xls_category.Name = "tbx_xls_category";
-            this.tbx_xls_category.Size = new System.Drawing.Size(244, 33);
+            this.tbx_xls_category.Size = new System.Drawing.Size(209, 33);
             this.tbx_xls_category.TabIndex = 6;
             // 
             // tbx_xls_name
@@ -353,7 +354,7 @@
             this.tbx_xls_name.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbx_xls_name.Location = new System.Drawing.Point(5, 107);
             this.tbx_xls_name.Name = "tbx_xls_name";
-            this.tbx_xls_name.Size = new System.Drawing.Size(244, 33);
+            this.tbx_xls_name.Size = new System.Drawing.Size(209, 33);
             this.tbx_xls_name.TabIndex = 5;
             // 
             // label5
@@ -387,7 +388,7 @@
             this.tbx_xls_code.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbx_xls_code.Location = new System.Drawing.Point(5, 33);
             this.tbx_xls_code.Name = "tbx_xls_code";
-            this.tbx_xls_code.Size = new System.Drawing.Size(244, 33);
+            this.tbx_xls_code.Size = new System.Drawing.Size(209, 33);
             this.tbx_xls_code.TabIndex = 2;
             // 
             // label7
@@ -418,7 +419,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 729);
+            this.ClientSize = new System.Drawing.Size(1090, 678);
             this.Controls.Add(this.iTalk_TabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimumSize = new System.Drawing.Size(125, 45);
