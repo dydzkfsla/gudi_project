@@ -38,7 +38,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -61,13 +61,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CodeData.xsd</DependentUpon>
     </Compile>
-    <Compile Include="EmployeesDB.cs" />
+    <Compile Include="DB\EmployeesDB.cs" />
     <Compile Include="Employees_Mast.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Employees_Mast.Designer.cs">
       <DependentUpon>Employees_Mast.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\ExtenstionMethod.cs" />
     <Compile Include="Master\Code_Mast.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +185,7 @@
     <Compile Include="UserMain\UserMain.Designer.cs">
       <DependentUpon>UserMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\UtilEvent.cs" />
     <Compile Include="Util\CommonUtil.cs" />
     <EmbeddedResource Include="Employees_Mast.resx">
       <DependentUpon>Employees_Mast.cs</DependentUpon>

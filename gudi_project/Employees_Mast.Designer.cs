@@ -33,6 +33,32 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgv_employees_All = new System.Windows.Forms.DataGridView();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dept_emp_Up_to_date01 = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.cbx_emp_Up_dep01 = new System.Windows.Forms.ComboBox();
+            this.cbx_emp_Up_mgr01 = new System.Windows.Forms.ComboBox();
+            this.tbx_emp_Up_salary01 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbx_emp_Up_ID01 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbx_emp_Up_Name01 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Salay_Toggle01 = new iTalk.iTalk_Toggle();
+            this.dtp_Empt_to_data_01 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_Empt_from_data_01 = new System.Windows.Forms.DateTimePicker();
+            this.tbx_Empt_salary01 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbx_Empt_name01 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbx_Empt_ID01 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.cbx_dep_code01 = new System.Windows.Forms.ComboBox();
             this.cbx_mgr_code01 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -117,10 +143,36 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.button5);
+            this.splitContainer2.Panel2.Controls.Add(this.button4);
+            this.splitContainer2.Panel2.Controls.Add(this.dept_emp_Up_to_date01);
+            this.splitContainer2.Panel2.Controls.Add(this.label9);
+            this.splitContainer2.Panel2.Controls.Add(this.button3);
+            this.splitContainer2.Panel2.Controls.Add(this.cbx_emp_Up_dep01);
+            this.splitContainer2.Panel2.Controls.Add(this.cbx_emp_Up_mgr01);
+            this.splitContainer2.Panel2.Controls.Add(this.tbx_emp_Up_salary01);
+            this.splitContainer2.Panel2.Controls.Add(this.label8);
+            this.splitContainer2.Panel2.Controls.Add(this.tbx_emp_Up_ID01);
+            this.splitContainer2.Panel2.Controls.Add(this.label7);
+            this.splitContainer2.Panel2.Controls.Add(this.tbx_emp_Up_Name01);
+            this.splitContainer2.Panel2.Controls.Add(this.label6);
+            this.splitContainer2.Panel2.Controls.Add(this.button2);
+            this.splitContainer2.Panel2.Controls.Add(this.Salay_Toggle01);
+            this.splitContainer2.Panel2.Controls.Add(this.dtp_Empt_to_data_01);
+            this.splitContainer2.Panel2.Controls.Add(this.dtp_Empt_from_data_01);
+            this.splitContainer2.Panel2.Controls.Add(this.tbx_Empt_salary01);
+            this.splitContainer2.Panel2.Controls.Add(this.label5);
+            this.splitContainer2.Panel2.Controls.Add(this.label4);
+            this.splitContainer2.Panel2.Controls.Add(this.label3);
+            this.splitContainer2.Panel2.Controls.Add(this.tbx_Empt_name01);
+            this.splitContainer2.Panel2.Controls.Add(this.label2);
+            this.splitContainer2.Panel2.Controls.Add(this.tbx_Empt_ID01);
+            this.splitContainer2.Panel2.Controls.Add(this.label1);
+            this.splitContainer2.Panel2.Controls.Add(this.button1);
             this.splitContainer2.Panel2.Controls.Add(this.cbx_dep_code01);
             this.splitContainer2.Panel2.Controls.Add(this.cbx_mgr_code01);
             this.splitContainer2.Size = new System.Drawing.Size(1131, 505);
-            this.splitContainer2.SplitterDistance = 834;
+            this.splitContainer2.SplitterDistance = 547;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -131,24 +183,252 @@
             this.dgv_employees_All.Location = new System.Drawing.Point(0, 0);
             this.dgv_employees_All.Name = "dgv_employees_All";
             this.dgv_employees_All.RowHeadersWidth = 51;
-            this.dgv_employees_All.Size = new System.Drawing.Size(834, 505);
+            this.dgv_employees_All.Size = new System.Drawing.Size(547, 505);
             this.dgv_employees_All.TabIndex = 0;
             this.dgv_employees_All.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employees_All_CellContentClick);
+            this.dgv_employees_All.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employees_All_CellDoubleClick);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(272, 440);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(166, 36);
+            this.button5.TabIndex = 31;
+            this.button5.Text = "입사";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(272, 398);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(166, 36);
+            this.button4.TabIndex = 30;
+            this.button4.Text = "삭제";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // dept_emp_Up_to_date01
+            // 
+            this.dept_emp_Up_to_date01.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dept_emp_Up_to_date01.Location = new System.Drawing.Point(272, 160);
+            this.dept_emp_Up_to_date01.Name = "dept_emp_Up_to_date01";
+            this.dept_emp_Up_to_date01.Size = new System.Drawing.Size(166, 29);
+            this.dept_emp_Up_to_date01.TabIndex = 29;
+            this.dept_emp_Up_to_date01.Value = new System.DateTime(2019, 6, 24, 0, 0, 0, 0);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(268, 136);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 21);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "입사";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(272, 356);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(166, 36);
+            this.button3.TabIndex = 27;
+            this.button3.Text = "수정";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // cbx_emp_Up_dep01
+            // 
+            this.cbx_emp_Up_dep01.FormattingEnabled = true;
+            this.cbx_emp_Up_dep01.Location = new System.Drawing.Point(271, 308);
+            this.cbx_emp_Up_dep01.Name = "cbx_emp_Up_dep01";
+            this.cbx_emp_Up_dep01.Size = new System.Drawing.Size(167, 29);
+            this.cbx_emp_Up_dep01.TabIndex = 26;
+            // 
+            // cbx_emp_Up_mgr01
+            // 
+            this.cbx_emp_Up_mgr01.FormattingEnabled = true;
+            this.cbx_emp_Up_mgr01.Location = new System.Drawing.Point(271, 269);
+            this.cbx_emp_Up_mgr01.Name = "cbx_emp_Up_mgr01";
+            this.cbx_emp_Up_mgr01.Size = new System.Drawing.Size(167, 29);
+            this.cbx_emp_Up_mgr01.TabIndex = 25;
+            // 
+            // tbx_emp_Up_salary01
+            // 
+            this.tbx_emp_Up_salary01.Location = new System.Drawing.Point(270, 226);
+            this.tbx_emp_Up_salary01.Name = "tbx_emp_Up_salary01";
+            this.tbx_emp_Up_salary01.Size = new System.Drawing.Size(120, 29);
+            this.tbx_emp_Up_salary01.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(267, 202);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 21);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "월급";
+            // 
+            // tbx_emp_Up_ID01
+            // 
+            this.tbx_emp_Up_ID01.Enabled = false;
+            this.tbx_emp_Up_ID01.Location = new System.Drawing.Point(272, 37);
+            this.tbx_emp_Up_ID01.Name = "tbx_emp_Up_ID01";
+            this.tbx_emp_Up_ID01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_emp_Up_ID01.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(268, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 21);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "번호";
+            // 
+            // tbx_emp_Up_Name01
+            // 
+            this.tbx_emp_Up_Name01.Location = new System.Drawing.Point(272, 104);
+            this.tbx_emp_Up_Name01.Name = "tbx_emp_Up_Name01";
+            this.tbx_emp_Up_Name01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_emp_Up_Name01.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(268, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 21);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "이름";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(20, 438);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 36);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "퇴사";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // Salay_Toggle01
+            // 
+            this.Salay_Toggle01.BackColor = System.Drawing.Color.Black;
+            this.Salay_Toggle01.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Salay_Toggle01.Location = new System.Drawing.Point(145, 289);
+            this.Salay_Toggle01.Name = "Salay_Toggle01";
+            this.Salay_Toggle01.Size = new System.Drawing.Size(41, 23);
+            this.Salay_Toggle01.TabIndex = 17;
+            this.Salay_Toggle01.Text = "Salay_Toggle01";
+            this.Salay_Toggle01.Toggled = false;
+            this.Salay_Toggle01.Type = iTalk.iTalk_Toggle._Type.YesNo;
+            // 
+            // dtp_Empt_to_data_01
+            // 
+            this.dtp_Empt_to_data_01.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_Empt_to_data_01.Location = new System.Drawing.Point(20, 227);
+            this.dtp_Empt_to_data_01.Name = "dtp_Empt_to_data_01";
+            this.dtp_Empt_to_data_01.Size = new System.Drawing.Size(166, 29);
+            this.dtp_Empt_to_data_01.TabIndex = 14;
+            this.dtp_Empt_to_data_01.Value = new System.DateTime(2021, 2, 22, 0, 0, 0, 0);
+            // 
+            // dtp_Empt_from_data_01
+            // 
+            this.dtp_Empt_from_data_01.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_Empt_from_data_01.Location = new System.Drawing.Point(20, 160);
+            this.dtp_Empt_from_data_01.Name = "dtp_Empt_from_data_01";
+            this.dtp_Empt_from_data_01.Size = new System.Drawing.Size(166, 29);
+            this.dtp_Empt_from_data_01.TabIndex = 13;
+            this.dtp_Empt_from_data_01.Value = new System.DateTime(2019, 6, 24, 0, 0, 0, 0);
+            // 
+            // tbx_Empt_salary01
+            // 
+            this.tbx_Empt_salary01.Location = new System.Drawing.Point(19, 283);
+            this.tbx_Empt_salary01.Name = "tbx_Empt_salary01";
+            this.tbx_Empt_salary01.Size = new System.Drawing.Size(120, 29);
+            this.tbx_Empt_salary01.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 259);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 21);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "월급";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 203);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 21);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "입사 종료";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 136);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 21);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "입사 시작";
+            // 
+            // tbx_Empt_name01
+            // 
+            this.tbx_Empt_name01.Location = new System.Drawing.Point(20, 104);
+            this.tbx_Empt_name01.Name = "tbx_Empt_name01";
+            this.tbx_Empt_name01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_Empt_name01.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 80);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 21);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "이름";
+            // 
+            // tbx_Empt_ID01
+            // 
+            this.tbx_Empt_ID01.Location = new System.Drawing.Point(20, 37);
+            this.tbx_Empt_ID01.Name = "tbx_Empt_ID01";
+            this.tbx_Empt_ID01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_Empt_ID01.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "번호";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 396);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 36);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "검색";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cbx_dep_code01
             // 
             this.cbx_dep_code01.FormattingEnabled = true;
-            this.cbx_dep_code01.Location = new System.Drawing.Point(18, 421);
+            this.cbx_dep_code01.Location = new System.Drawing.Point(19, 361);
             this.cbx_dep_code01.Name = "cbx_dep_code01";
-            this.cbx_dep_code01.Size = new System.Drawing.Size(121, 36);
+            this.cbx_dep_code01.Size = new System.Drawing.Size(167, 29);
             this.cbx_dep_code01.TabIndex = 1;
             // 
             // cbx_mgr_code01
             // 
             this.cbx_mgr_code01.FormattingEnabled = true;
-            this.cbx_mgr_code01.Location = new System.Drawing.Point(18, 369);
+            this.cbx_mgr_code01.Location = new System.Drawing.Point(19, 322);
             this.cbx_mgr_code01.Name = "cbx_mgr_code01";
-            this.cbx_mgr_code01.Size = new System.Drawing.Size(121, 36);
+            this.cbx_mgr_code01.Size = new System.Drawing.Size(167, 29);
             this.cbx_mgr_code01.TabIndex = 0;
             // 
             // tabPage3
@@ -157,7 +437,7 @@
             this.tabPage3.Controls.Add(this.splitContainer3);
             this.tabPage3.Location = new System.Drawing.Point(139, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1132, 482);
+            this.tabPage3.Size = new System.Drawing.Size(1139, 515);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "현직자";
             // 
@@ -170,8 +450,8 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer3.Size = new System.Drawing.Size(1132, 482);
-            this.splitContainer3.SplitterDistance = 834;
+            this.splitContainer3.Size = new System.Drawing.Size(1139, 515);
+            this.splitContainer3.SplitterDistance = 839;
             this.splitContainer3.SplitterWidth = 10;
             this.splitContainer3.TabIndex = 2;
             // 
@@ -182,7 +462,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(834, 482);
+            this.dataGridView1.Size = new System.Drawing.Size(839, 515);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage4
@@ -227,7 +507,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage2.Size = new System.Drawing.Size(1132, 482);
+            this.tabPage2.Size = new System.Drawing.Size(1139, 515);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "직원 엑셀";
             // 
@@ -240,8 +520,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgv_xls_employees);
-            this.splitContainer1.Size = new System.Drawing.Size(1124, 472);
-            this.splitContainer1.SplitterDistance = 731;
+            this.splitContainer1.Size = new System.Drawing.Size(1131, 505);
+            this.splitContainer1.SplitterDistance = 799;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -252,12 +532,12 @@
             this.dgv_xls_employees.Location = new System.Drawing.Point(0, 0);
             this.dgv_xls_employees.Name = "dgv_xls_employees";
             this.dgv_xls_employees.RowHeadersWidth = 51;
-            this.dgv_xls_employees.Size = new System.Drawing.Size(731, 472);
+            this.dgv_xls_employees.Size = new System.Drawing.Size(799, 505);
             this.dgv_xls_employees.TabIndex = 0;
             // 
             // Employees_Mast
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 523);
             this.Controls.Add(this.TabControls);
@@ -271,6 +551,7 @@
             this.tabPage1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employees_All)).EndInit();
@@ -311,5 +592,31 @@
         private CodeData codeData1;
         private System.Windows.Forms.ComboBox cbx_dep_code01;
         private System.Windows.Forms.ComboBox cbx_mgr_code01;
+        private System.Windows.Forms.TextBox tbx_Empt_salary01;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbx_Empt_name01;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbx_Empt_ID01;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dtp_Empt_to_data_01;
+        private System.Windows.Forms.DateTimePicker dtp_Empt_from_data_01;
+        private iTalk.iTalk_Toggle Salay_Toggle01;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DateTimePicker dept_emp_Up_to_date01;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cbx_emp_Up_dep01;
+        private System.Windows.Forms.ComboBox cbx_emp_Up_mgr01;
+        private System.Windows.Forms.TextBox tbx_emp_Up_salary01;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbx_emp_Up_ID01;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbx_emp_Up_Name01;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }
