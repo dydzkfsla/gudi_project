@@ -39,6 +39,20 @@ namespace gudi_project
         private void SetControls()
         {
             SetDgv(dgv_employees_All);
+            SetDgv(dgv_employees01);
+            SetDgv(dgv_employees02);
+
+            #region dgv 무명 매서드
+            dgv_employees01.CellDoubleClick += (a, b) => TabControls.SelectedIndex = 0;
+            dgv_employees02.CellDoubleClick += (obj, evnt) =>
+            {
+                int row = evnt.RowIndex;
+                if (row == -1)
+                    return;
+                tbx_Empt_ID02.Text = dgv_employees02["emp_ID", evnt.RowIndex].Value.ToString();
+                dept_emp_Up_to_date02.Value = Convert.ToDateTime(dgv_employees02["emp_to_date", evnt.RowIndex].Value.ToString());
+            };
+            #endregion
 
 
             CodeDB cdb = new CodeDB();
@@ -79,13 +93,12 @@ namespace gudi_project
             CommonUtil.AddGridTextColumn(dgv, "emp_from_date", "emp_from_date", 150);
             CommonUtil.AddGridTextColumn(dgv, "emp_to_date", "emp_to_date", 150);
             CommonUtil.AddGridTextColumn(dgv, "emp_salary", "emp_salary", 100);
-            CommonUtil.AddGridTextColumn(dgv, "emp_mgr_name", "mgrname", 100);
-            CommonUtil.AddGridTextColumn(dgv, "emp_dep_name", "depname", 100);
+            CommonUtil.AddGridTextColumn(dgv, "emp_mgr_name", "mgrname", 150);
+            CommonUtil.AddGridTextColumn(dgv, "emp_dep_name", "depname", 150);
 
             CommonUtil.AddGridTextColumn(dgv, "emp_mgr_code", "emp_mgr_code", 1, false);
             CommonUtil.AddGridTextColumn(dgv, "emp_dep_code", "emp_dep_code", 1, false);
         }
-       
 
         private void dataLoad()
         {
@@ -94,10 +107,9 @@ namespace gudi_project
             if (AllEmpt == null)
                 return;
             dgv_employees_All.DataSource = AllEmpt;
-
+            Setdgv_empt_0102();
             AllEmpt.AcceptChanges();
             db.Dispose();
-
 
             int x = dgv_employees_All.Rows[0].Cells[0].ContentBounds.X;
             int y = dgv_employees_All.Rows[0].Cells[0].ContentBounds.Y;
@@ -111,10 +123,20 @@ namespace gudi_project
             dgv_employees_All.Tag = delete;
             delete.Tag = dgv_employees_All;
 
-            foreach (DataGridViewRow rw in dataGridView1.Rows)
+            foreach (DataGridViewRow rw in dgv_employees01.Rows)
             {
                 rw.Cells[0].Value = false;
             }
+        }
+
+        private void Setdgv_empt_0102()
+        {
+            DataView dv = ((DataTable)dgv_employees_All.DataSource).AsDataView();
+            dv.RowFilter = "emp_to_date >= #9999-12-30#";
+            dgv_employees01.DataSource = dv.ToTable();
+
+            dv.RowFilter = "emp_to_date NOT IN (#9999-12-30#)";
+            dgv_employees02.DataSource = dv.ToTable();
         }
         #endregion
 
@@ -154,15 +176,16 @@ namespace gudi_project
         #region all데이터 그리드 더블클릭
         private void dgv_employees_All_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridView dgv = (DataGridView)sender;
             int row = e.RowIndex;
             if (row == -1)
                 return;
-            tbx_emp_Up_ID01.Text = dgv_employees_All["emp_ID", e.RowIndex].Value.ToString();
-            tbx_emp_Up_Name01.Text = dgv_employees_All["emp_name", e.RowIndex].Value.ToString();
-            tbx_emp_Up_salary01.Text = dgv_employees_All["emp_salary", e.RowIndex].Value.ToString();
-            cbx_emp_Up_dep01.SelectedValue = dgv_employees_All["emp_dep_code", e.RowIndex].Value.ToString();
-            cbx_emp_Up_mgr01.SelectedValue = dgv_employees_All["emp_mgr_code", e.RowIndex].Value.ToString();
-            dept_emp_Up_to_date01.Value = Convert.ToDateTime(dgv_employees_All["emp_from_date", e.RowIndex].Value.ToString());
+            tbx_emp_Up_ID01.Text = dgv["emp_ID", e.RowIndex].Value.ToString();
+            tbx_emp_Up_Name01.Text = dgv["emp_name", e.RowIndex].Value.ToString();
+            tbx_emp_Up_salary01.Text = dgv["emp_salary", e.RowIndex].Value.ToString();
+            cbx_emp_Up_dep01.SelectedValue = dgv["emp_dep_code", e.RowIndex].Value.ToString();
+            cbx_emp_Up_mgr01.SelectedValue = dgv["emp_mgr_code", e.RowIndex].Value.ToString();
+            dept_emp_Up_to_date01.Value = Convert.ToDateTime(dgv["emp_from_date", e.RowIndex].Value.ToString());
         }
         #endregion
 
@@ -235,6 +258,7 @@ namespace gudi_project
                 dv.RowFilter = Filter;
             }
             dgv_employees_All.DataSource = dv.ToTable();
+            Setdgv_empt_0102();
         }
 
 
@@ -263,6 +287,19 @@ namespace gudi_project
         }
         #endregion
 
+        #region 퇴사 확인
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string emp_ID = tbx_emp_Up_ID01.Text.Trim();
+            if (emp_ID == string.Empty)
+                return;
+            EmployeesDB db = new EmployeesDB();
+            db.updateTodateNow(emp_ID);
+            dataLoad();
+        }
+        #endregion
+
         #region 입사
         private void button5_Click(object sender, EventArgs e)
         {
@@ -280,8 +317,114 @@ namespace gudi_project
             emp.emp_mgr_code = cbx_emp_Up_mgr01.SelectedValue.ToString();
 
             EmployeesDB db = new EmployeesDB();
-            //db.
+            db.insert(emp);
+            db.Dispose();
+
+            dataLoad();
         }
-        #endregion 
+        #endregion
+
+        #region 삭제
+        private void button4_Click(object sender, EventArgs e)
+        {
+            employees employees = new employees();
+            if (tbx_emp_Up_ID01.Text.Trim() == string.Empty)
+                return;
+            employees.emp_ID = tbx_emp_Up_ID01.Text.Trim();
+
+            EmployeesDB db = new EmployeesDB();
+            db.delete(employees);
+            db.Dispose();
+
+            dataLoad();
+            
+        }
+
+
+        #endregion
+
+        #region 엑셀
+        #region 엑셀 Export
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            CommonExcel excel = new CommonExcel();
+            excel.Cursor = this.Cursor;
+            dlg.Filter = "Excel File(*.xls)|*.xls";
+            dlg.Title = "엑셀파일로 내보내기";
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+            AllEmpt.TableName = "employees";
+            string toltip = $@"emp_ID: 직원의 고유 번호
+                            {System.Environment.NewLine}emp_name: 직원의 이름
+                            {System.Environment.NewLine}emp_from_date:  직원 입사일
+                            {System.Environment.NewLine}emp_to_date: 원 퇴사일
+                            {System.Environment.NewLine}emp_salary: 직원의 월급
+                            {System.Environment.NewLine}emp_mgr_code:  직원 매니저 유무
+                            {System.Environment.NewLine}emp_dep_code: 직원 부서";
+            if (excel.ExportDataToExcel(AllEmpt, dlg.FileName, toltip))
+            {
+                MessageBox.Show("엑셀파일에 저장하였습니다.");
+            }
+        }
+
+        #endregion
+
+        #region 엑셀 import
+        private void button9_Click(object sender, EventArgs e)
+        {
+            DataTable ndt = new DataTable();
+            CommonExcel excel = new CommonExcel();
+            ndt.Columns.Clear();
+            //emp_ID, emp_name, emp_from_date, emp_to_date, emp_salary, emp_mgr_code, emp_dep_code
+            ndt.Columns.Add(new DataColumn("emp_ID", typeof(string)));
+            ndt.Columns.Add(new DataColumn("emp_name", typeof(string)));
+            ndt.Columns.Add(new DataColumn("emp_from_date", typeof(string)));
+            ndt.Columns.Add(new DataColumn("emp_to_date", typeof(string)));
+            ndt.Columns.Add(new DataColumn("emp_salary", typeof(string)));
+            ndt.Columns.Add(new DataColumn("emp_mgr_name", typeof(string)));
+            ndt.Columns.Add(new DataColumn( "emp_dep_name", typeof(string)));
+            ndt.Columns.Add(new DataColumn("emp_mgr_code", typeof(string)));
+            ndt.Columns.Add(new DataColumn("emp_dep_code", typeof(string)));
+            excel.Cursor = this.Cursor;
+            excel.ImportDatatoExcelnonOleDb(ndt, dgv_xls_employees);
+            //dgv_xls_employees.DataSource = ndt;
+        }
+        #endregion
+
+
+        #endregion
+
+        #region 퇴사 취소
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string emp_ID = tbx_Empt_ID02.Text.Trim();
+            if (emp_ID == string.Empty)
+                return;
+            EmployeesDB db = new EmployeesDB();
+            db.updateTodateBreak(emp_ID);
+            db.Dispose();
+            dataLoad();
+
+        }
+        #endregion
+
+        #region 퇴사일 변경
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (tbx_Empt_ID02.Text.Trim() == string.Empty)
+                return;
+            employees employees = new employees();
+            employees.emp_ID = tbx_Empt_ID02.Text.Trim();
+            employees.emp_to_date = dept_emp_Up_to_date02.Value.ToString("yyyy-MM-dd");
+
+            EmployeesDB db = new EmployeesDB();
+            db.updateTodate(employees);
+            db.Dispose();
+            dataLoad();
+        }
+        #endregion
+
+        #endregion
     }
 }

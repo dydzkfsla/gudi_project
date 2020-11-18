@@ -50,6 +50,7 @@ namespace gudi_project
         #endregion
 
         #region 직원 정보 Update
+        #region employees 기반 Update
         public bool update(employees employees)
         {
             string sql = @"update employees 
@@ -72,8 +73,60 @@ namespace gudi_project
                 return true;
             else
                 return false;
-
         }
+        #endregion
+
+        #region 직원 퇴사
+        public bool updateTodateNow(string emp_ID)
+        {
+            string sql = @"update employees 
+                         set emp_to_date =date_format(now(), '%Y-%m-%d')
+                         where emp_ID = @emp_ID;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.Int32, "@emp_ID", emp_ID);
+
+            if (cmd.ExecuteNonQuery() > 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+
+        #region 직원 퇴사 취소
+        public bool updateTodateBreak(string emp_ID)
+        {
+            string sql = @"update employees 
+                         set emp_to_date = '9999-12-30'
+                         where emp_ID = @emp_ID;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.Int32, "@emp_ID", emp_ID);
+
+            if (cmd.ExecuteNonQuery() > 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+
+        #region 직원 퇴사일 변경
+        public bool updateTodate(employees employees)
+        {
+            string sql = @"update employees 
+                         set emp_to_date = @emp_to_date
+                         where emp_ID = @emp_ID;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.Int32, "@emp_ID", employees.emp_ID);
+            setParameters(cmd, MySqlDbType.DateTime, "@emp_to_date", employees.emp_to_date);
+
+            if (cmd.ExecuteNonQuery() > 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
 
         #endregion
 
@@ -81,15 +134,31 @@ namespace gudi_project
         public bool insert(employees employees)
         {
             string sql = @"insert into employees (emp_name, emp_from_date, emp_to_date, emp_salary, emp_mgr_code, emp_dep_code) 
-            values();";
+            values(@emp_name , @emp_from_date , '9999-12-30' ,@emp_salary ,@emp_mgr_code,@emp_dep_code);";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            setParameters(cmd, MySqlDbType.VarChar, "@emp_name", employees.emp_name);
+            setParameters(cmd, MySqlDbType.DateTime, "@emp_from_date", employees.emp_from_date);
+            setParameters(cmd, MySqlDbType.Int32, "@emp_salary", employees.emp_salary);
+            setParameters(cmd, MySqlDbType.VarChar, "@emp_mgr_code", employees.emp_mgr_code);
+            setParameters(cmd, MySqlDbType.VarChar, "@emp_dep_code", employees.emp_dep_code);
+
+            if (cmd.ExecuteNonQuery() > 0)
+                return true;
+            else
+                return false;
+
+        }
+
+        #endregion
+
+        #region 직원 정보 delete
+        public bool delete(employees employees)
+        {
+            string sql = @"delete from employees where emp_ID = @emp_ID;";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             setParameters(cmd, MySqlDbType.Int32, "@emp_ID", employees.emp_ID);
-            setParameters(cmd, MySqlDbType.DateTime, "@emp_from_date", employees.emp_from_date);
-            setParameters(cmd, MySqlDbType.Int32, "@emp_salary", employees.emp_salary);
-            setParameters(cmd, MySqlDbType.VarChar, "@emp_name", employees.emp_name);
-            setParameters(cmd, MySqlDbType.VarChar, "@emp_mgr_code", employees.emp_mgr_code);
-            setParameters(cmd, MySqlDbType.VarChar, "@emp_dep_code", employees.emp_dep_code);
 
             if (cmd.ExecuteNonQuery() > 0)
                 return true;
@@ -109,11 +178,6 @@ namespace gudi_project
         }
 
         #endregion
-
-
-
-
-
 
 
         public void Dispose()

@@ -134,16 +134,14 @@ namespace gudi_project
             excel.Cursor = this.Cursor;
             dlg.Filter = "Excel File(*.xls)|*.xls";
             dlg.Title = "엑셀파일로 내보내기";
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                //dt.Columns[0].ColumnName = "code";
-                //dt.Columns[1].ColumnName = "name";
-                //dt.Columns[2].ColumnName = "category";
-                //dt.Columns[3].ColumnName = "pcode";
-
-            }
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
             dt.TableName = "code";
-            if (excel.ExportDataToExcel(dt , dlg.FileName))
+            string toltip = $@"code: 저장될 code값
+                            {System.Environment.NewLine}name: 코드의 표현 값
+                            {System.Environment.NewLine}category:  어느 그룹에 속하는지
+                            {System.Environment.NewLine}pcode: 상위 부모가 있을경우 부모 code";
+            if (excel.ExportDataToExcel(dt , dlg.FileName, toltip))
             {
                 MessageBox.Show("엑셀파일에 저장하였습니다.");
             }
@@ -163,8 +161,6 @@ namespace gudi_project
             ndt.Columns.Add(new DataColumn("pcode", typeof(string)));
             excel.ImportDatatoExcelnonOleDb(ndt, dataGridView2);
             cbx_xls_pcode.DataSource = ndt;
-
-
         }
 
         #endregion

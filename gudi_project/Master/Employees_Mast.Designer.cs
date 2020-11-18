@@ -33,6 +33,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dgv_employees_All = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dept_emp_Up_to_date01 = new System.Windows.Forms.DateTimePicker();
@@ -62,14 +63,21 @@
             this.cbx_dep_code01 = new System.Windows.Forms.ComboBox();
             this.cbx_mgr_code01 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_employees01 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgv_employees02 = new System.Windows.Forms.DataGridView();
+            this.button8 = new System.Windows.Forms.Button();
+            this.dept_emp_Up_to_date02 = new System.Windows.Forms.DateTimePicker();
+            this.asdasdasdsadsad = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbx_Empt_ID02 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv_xls_employees = new System.Windows.Forms.DataGridView();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.codeData1)).BeginInit();
             this.TabControls.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -79,18 +87,17 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employees_All)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_employees01)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_employees02)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_xls_employees)).BeginInit();
             this.SuspendLayout();
@@ -143,6 +150,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.button6);
             this.splitContainer2.Panel2.Controls.Add(this.button5);
             this.splitContainer2.Panel2.Controls.Add(this.button4);
             this.splitContainer2.Panel2.Controls.Add(this.dept_emp_Up_to_date01);
@@ -172,7 +180,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.cbx_dep_code01);
             this.splitContainer2.Panel2.Controls.Add(this.cbx_mgr_code01);
             this.splitContainer2.Size = new System.Drawing.Size(1131, 505);
-            this.splitContainer2.SplitterDistance = 547;
+            this.splitContainer2.SplitterDistance = 442;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -183,10 +191,20 @@
             this.dgv_employees_All.Location = new System.Drawing.Point(0, 0);
             this.dgv_employees_All.Name = "dgv_employees_All";
             this.dgv_employees_All.RowHeadersWidth = 51;
-            this.dgv_employees_All.Size = new System.Drawing.Size(547, 505);
+            this.dgv_employees_All.Size = new System.Drawing.Size(442, 505);
             this.dgv_employees_All.TabIndex = 0;
             this.dgv_employees_All.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employees_All_CellContentClick);
             this.dgv_employees_All.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employees_All_CellDoubleClick);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(473, 37);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(166, 36);
+            this.button6.TabIndex = 32;
+            this.button6.Text = "엑셀 Export";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -206,6 +224,7 @@
             this.button4.TabIndex = 30;
             this.button4.Text = "삭제";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dept_emp_Up_to_date01
             // 
@@ -308,6 +327,7 @@
             this.button2.TabIndex = 18;
             this.button2.Text = "퇴사";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Salay_Toggle01
             // 
@@ -434,36 +454,23 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.tabPage3.Controls.Add(this.splitContainer3);
+            this.tabPage3.Controls.Add(this.dgv_employees01);
             this.tabPage3.Location = new System.Drawing.Point(139, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1139, 515);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "현직자";
             // 
-            // splitContainer3
+            // dgv_employees01
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer3.Size = new System.Drawing.Size(1139, 515);
-            this.splitContainer3.SplitterDistance = 839;
-            this.splitContainer3.SplitterWidth = 10;
-            this.splitContainer3.TabIndex = 2;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(839, 515);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_employees01.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_employees01.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_employees01.Location = new System.Drawing.Point(0, 0);
+            this.dgv_employees01.Name = "dgv_employees01";
+            this.dgv_employees01.RowHeadersWidth = 51;
+            this.dgv_employees01.Size = new System.Drawing.Size(1139, 515);
+            this.dgv_employees01.TabIndex = 0;
+            this.dgv_employees01.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employees_All_CellDoubleClick);
             // 
             // tabPage4
             // 
@@ -483,21 +490,85 @@
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.dataGridView2);
+            this.splitContainer4.Panel1.Controls.Add(this.dgv_employees02);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.button8);
+            this.splitContainer4.Panel2.Controls.Add(this.dept_emp_Up_to_date02);
+            this.splitContainer4.Panel2.Controls.Add(this.asdasdasdsadsad);
+            this.splitContainer4.Panel2.Controls.Add(this.button7);
+            this.splitContainer4.Panel2.Controls.Add(this.label10);
+            this.splitContainer4.Panel2.Controls.Add(this.tbx_Empt_ID02);
             this.splitContainer4.Size = new System.Drawing.Size(1139, 515);
-            this.splitContainer4.SplitterDistance = 839;
+            this.splitContainer4.SplitterDistance = 786;
             this.splitContainer4.SplitterWidth = 10;
             this.splitContainer4.TabIndex = 2;
             // 
-            // dataGridView2
+            // dgv_employees02
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(839, 515);
-            this.dataGridView2.TabIndex = 0;
+            this.dgv_employees02.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_employees02.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_employees02.Location = new System.Drawing.Point(0, 0);
+            this.dgv_employees02.Name = "dgv_employees02";
+            this.dgv_employees02.RowHeadersWidth = 51;
+            this.dgv_employees02.Size = new System.Drawing.Size(786, 515);
+            this.dgv_employees02.TabIndex = 0;
+            this.dgv_employees02.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_employees_All_CellDoubleClick);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(13, 182);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(121, 36);
+            this.button8.TabIndex = 5;
+            this.button8.Text = "퇴사일 변경";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // dept_emp_Up_to_date02
+            // 
+            this.dept_emp_Up_to_date02.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dept_emp_Up_to_date02.Location = new System.Drawing.Point(13, 93);
+            this.dept_emp_Up_to_date02.Name = "dept_emp_Up_to_date02";
+            this.dept_emp_Up_to_date02.Size = new System.Drawing.Size(100, 29);
+            this.dept_emp_Up_to_date02.TabIndex = 4;
+            // 
+            // asdasdasdsadsad
+            // 
+            this.asdasdasdsadsad.AutoSize = true;
+            this.asdasdasdsadsad.Location = new System.Drawing.Point(13, 59);
+            this.asdasdasdsadsad.Name = "asdasdasdsadsad";
+            this.asdasdasdsadsad.Size = new System.Drawing.Size(58, 21);
+            this.asdasdasdsadsad.TabIndex = 3;
+            this.asdasdasdsadsad.Text = "퇴사일";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(13, 140);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(100, 36);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "현직자로";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 3);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 21);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "퇴사자 ID";
+            // 
+            // tbx_Empt_ID02
+            // 
+            this.tbx_Empt_ID02.Enabled = false;
+            this.tbx_Empt_ID02.Location = new System.Drawing.Point(13, 27);
+            this.tbx_Empt_ID02.Name = "tbx_Empt_ID02";
+            this.tbx_Empt_ID02.Size = new System.Drawing.Size(100, 29);
+            this.tbx_Empt_ID02.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -520,6 +591,11 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgv_xls_employees);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.button10);
+            this.splitContainer1.Panel2.Controls.Add(this.button9);
             this.splitContainer1.Size = new System.Drawing.Size(1131, 505);
             this.splitContainer1.SplitterDistance = 799;
             this.splitContainer1.SplitterWidth = 10;
@@ -534,6 +610,25 @@
             this.dgv_xls_employees.RowHeadersWidth = 51;
             this.dgv_xls_employees.Size = new System.Drawing.Size(799, 505);
             this.dgv_xls_employees.TabIndex = 0;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(17, 18);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(166, 36);
+            this.button9.TabIndex = 33;
+            this.button9.Text = "엑셀Import";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(17, 73);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(166, 36);
+            this.button10.TabIndex = 34;
+            this.button10.Text = "엑셀 반영";
+            this.button10.UseVisualStyleBackColor = true;
             // 
             // Employees_Mast
             // 
@@ -556,17 +651,17 @@
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_employees_All)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_employees01)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            this.splitContainer4.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_employees02)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_xls_employees)).EndInit();
@@ -585,10 +680,9 @@
         private System.Windows.Forms.DataGridView dgv_xls_employees;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_employees01;
         private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgv_employees02;
         private CodeData codeData1;
         private System.Windows.Forms.ComboBox cbx_dep_code01;
         private System.Windows.Forms.ComboBox cbx_mgr_code01;
@@ -618,5 +712,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbx_Empt_ID02;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.DateTimePicker dept_emp_Up_to_date02;
+        private System.Windows.Forms.Label asdasdasdsadsad;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
     }
 }

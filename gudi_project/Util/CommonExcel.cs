@@ -110,7 +110,7 @@ namespace gudi_project
             }
         }
 
-        public bool ExportDataToExcel(DataTable dt, string fileName)
+        public bool ExportDataToExcel(DataTable dt, string fileName,string tooltip)
         {
             Cursor currentCursor = null;
             if (this.Cursor != null)
@@ -127,10 +127,7 @@ namespace gudi_project
                 xlSheet.Name = dt.TableName;
 
                 //엑셀파일 내용에 대한 설명
-                xlSheet.Cells[1, 1] = $@"code: 저장될 code값
-                                                    {System.Environment.NewLine}name: 코드의 표현 값
-                                                    {System.Environment.NewLine}category:  어느 그룹에 속하는지
-                                                    {System.Environment.NewLine}pcode: 상위 부모가 있을경우 부모 code";
+                xlSheet.Cells[1, 1] = tooltip;
                 xlSheet.Range[xlSheet.Cells[1, 1], xlSheet.Cells[1, 5]].Merge();
                 ((Excel.Range)xlSheet.Cells[1, 1]).EntireRow.RowHeight = 200;
 

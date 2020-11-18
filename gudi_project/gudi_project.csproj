@@ -62,10 +62,10 @@
       <DependentUpon>CodeData.xsd</DependentUpon>
     </Compile>
     <Compile Include="DB\EmployeesDB.cs" />
-    <Compile Include="Employees_Mast.cs">
+    <Compile Include="Master\Employees_Mast.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Employees_Mast.Designer.cs">
+    <Compile Include="Master\Employees_Mast.Designer.cs">
       <DependentUpon>Employees_Mast.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\ExtenstionMethod.cs" />
@@ -75,7 +75,7 @@
     <Compile Include="Master\Code_Mast.Designer.cs">
       <DependentUpon>Code_Mast.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommonExcel.cs" />
+    <Compile Include="Util\CommonExcel.cs" />
     <Compile Include="iTalk Theme - C#.cs" />
     <Compile Include="Master\Master_Mainfrm.cs">
       <SubType>Form</SubType>
@@ -187,7 +187,7 @@
     </Compile>
     <Compile Include="Util\UtilEvent.cs" />
     <Compile Include="Util\CommonUtil.cs" />
-    <EmbeddedResource Include="Employees_Mast.resx">
+    <EmbeddedResource Include="Master\Employees_Mast.resx">
       <DependentUpon>Employees_Mast.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Code_Mast.resx">
