@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.codeData1 = new gudi_project.CodeData();
+           //this.codeData1 = new gudi_project.CodeData();
             this.TabControls = new iTalk.iTalk_TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -76,9 +76,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv_xls_employees = new System.Windows.Forms.DataGridView();
-            this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.codeData1)).BeginInit();
+            this.button9 = new System.Windows.Forms.Button();
+            //((System.ComponentModel.ISupportInitialize)(this.codeData1)).BeginInit();
             this.TabControls.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -104,8 +104,8 @@
             // 
             // codeData1
             // 
-            this.codeData1.DataSetName = "CodeData";
-            this.codeData1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //this.codeData1.DataSetName = "CodeData";
+            //this.codeData1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // TabControls
             // 
@@ -231,7 +231,7 @@
             this.dept_emp_Up_to_date01.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dept_emp_Up_to_date01.Location = new System.Drawing.Point(272, 160);
             this.dept_emp_Up_to_date01.Name = "dept_emp_Up_to_date01";
-            this.dept_emp_Up_to_date01.Size = new System.Drawing.Size(166, 29);
+            this.dept_emp_Up_to_date01.Size = new System.Drawing.Size(166, 34);
             this.dept_emp_Up_to_date01.TabIndex = 29;
             this.dept_emp_Up_to_date01.Value = new System.DateTime(2019, 6, 24, 0, 0, 0, 0);
             // 
@@ -240,7 +240,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(268, 136);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 21);
+            this.label9.Size = new System.Drawing.Size(52, 28);
             this.label9.TabIndex = 28;
             this.label9.Text = "입사";
             // 
@@ -259,7 +259,7 @@
             this.cbx_emp_Up_dep01.FormattingEnabled = true;
             this.cbx_emp_Up_dep01.Location = new System.Drawing.Point(271, 308);
             this.cbx_emp_Up_dep01.Name = "cbx_emp_Up_dep01";
-            this.cbx_emp_Up_dep01.Size = new System.Drawing.Size(167, 29);
+            this.cbx_emp_Up_dep01.Size = new System.Drawing.Size(167, 36);
             this.cbx_emp_Up_dep01.TabIndex = 26;
             // 
             // cbx_emp_Up_mgr01
@@ -267,14 +267,14 @@
             this.cbx_emp_Up_mgr01.FormattingEnabled = true;
             this.cbx_emp_Up_mgr01.Location = new System.Drawing.Point(271, 269);
             this.cbx_emp_Up_mgr01.Name = "cbx_emp_Up_mgr01";
-            this.cbx_emp_Up_mgr01.Size = new System.Drawing.Size(167, 29);
+            this.cbx_emp_Up_mgr01.Size = new System.Drawing.Size(167, 36);
             this.cbx_emp_Up_mgr01.TabIndex = 25;
             // 
             // tbx_emp_Up_salary01
             // 
             this.tbx_emp_Up_salary01.Location = new System.Drawing.Point(270, 226);
             this.tbx_emp_Up_salary01.Name = "tbx_emp_Up_salary01";
-            this.tbx_emp_Up_salary01.Size = new System.Drawing.Size(120, 29);
+            this.tbx_emp_Up_salary01.Size = new System.Drawing.Size(120, 34);
             this.tbx_emp_Up_salary01.TabIndex = 24;
             // 
             // label8
@@ -282,7 +282,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(267, 202);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 21);
+            this.label8.Size = new System.Drawing.Size(52, 28);
             this.label8.TabIndex = 23;
             this.label8.Text = "월급";
             // 
@@ -291,7 +291,7 @@
             this.tbx_emp_Up_ID01.Enabled = false;
             this.tbx_emp_Up_ID01.Location = new System.Drawing.Point(272, 37);
             this.tbx_emp_Up_ID01.Name = "tbx_emp_Up_ID01";
-            this.tbx_emp_Up_ID01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_emp_Up_ID01.Size = new System.Drawing.Size(166, 34);
             this.tbx_emp_Up_ID01.TabIndex = 22;
             // 
             // label7
@@ -299,7 +299,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(268, 13);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 21);
+            this.label7.Size = new System.Drawing.Size(52, 28);
             this.label7.TabIndex = 21;
             this.label7.Text = "번호";
             // 
@@ -307,7 +307,7 @@
             // 
             this.tbx_emp_Up_Name01.Location = new System.Drawing.Point(272, 104);
             this.tbx_emp_Up_Name01.Name = "tbx_emp_Up_Name01";
-            this.tbx_emp_Up_Name01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_emp_Up_Name01.Size = new System.Drawing.Size(166, 34);
             this.tbx_emp_Up_Name01.TabIndex = 20;
             // 
             // label6
@@ -315,7 +315,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(268, 80);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 21);
+            this.label6.Size = new System.Drawing.Size(52, 28);
             this.label6.TabIndex = 19;
             this.label6.Text = "이름";
             // 
@@ -346,7 +346,7 @@
             this.dtp_Empt_to_data_01.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_Empt_to_data_01.Location = new System.Drawing.Point(20, 227);
             this.dtp_Empt_to_data_01.Name = "dtp_Empt_to_data_01";
-            this.dtp_Empt_to_data_01.Size = new System.Drawing.Size(166, 29);
+            this.dtp_Empt_to_data_01.Size = new System.Drawing.Size(166, 34);
             this.dtp_Empt_to_data_01.TabIndex = 14;
             this.dtp_Empt_to_data_01.Value = new System.DateTime(2021, 2, 22, 0, 0, 0, 0);
             // 
@@ -355,7 +355,7 @@
             this.dtp_Empt_from_data_01.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_Empt_from_data_01.Location = new System.Drawing.Point(20, 160);
             this.dtp_Empt_from_data_01.Name = "dtp_Empt_from_data_01";
-            this.dtp_Empt_from_data_01.Size = new System.Drawing.Size(166, 29);
+            this.dtp_Empt_from_data_01.Size = new System.Drawing.Size(166, 34);
             this.dtp_Empt_from_data_01.TabIndex = 13;
             this.dtp_Empt_from_data_01.Value = new System.DateTime(2019, 6, 24, 0, 0, 0, 0);
             // 
@@ -363,7 +363,7 @@
             // 
             this.tbx_Empt_salary01.Location = new System.Drawing.Point(19, 283);
             this.tbx_Empt_salary01.Name = "tbx_Empt_salary01";
-            this.tbx_Empt_salary01.Size = new System.Drawing.Size(120, 29);
+            this.tbx_Empt_salary01.Size = new System.Drawing.Size(120, 34);
             this.tbx_Empt_salary01.TabIndex = 12;
             // 
             // label5
@@ -371,7 +371,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 259);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 21);
+            this.label5.Size = new System.Drawing.Size(52, 28);
             this.label5.TabIndex = 11;
             this.label5.Text = "월급";
             // 
@@ -380,7 +380,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 203);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 21);
+            this.label4.Size = new System.Drawing.Size(98, 28);
             this.label4.TabIndex = 9;
             this.label4.Text = "입사 종료";
             // 
@@ -389,7 +389,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 136);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 21);
+            this.label3.Size = new System.Drawing.Size(98, 28);
             this.label3.TabIndex = 7;
             this.label3.Text = "입사 시작";
             // 
@@ -397,7 +397,7 @@
             // 
             this.tbx_Empt_name01.Location = new System.Drawing.Point(20, 104);
             this.tbx_Empt_name01.Name = "tbx_Empt_name01";
-            this.tbx_Empt_name01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_Empt_name01.Size = new System.Drawing.Size(166, 34);
             this.tbx_Empt_name01.TabIndex = 6;
             // 
             // label2
@@ -405,7 +405,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(16, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 21);
+            this.label2.Size = new System.Drawing.Size(52, 28);
             this.label2.TabIndex = 5;
             this.label2.Text = "이름";
             // 
@@ -413,7 +413,7 @@
             // 
             this.tbx_Empt_ID01.Location = new System.Drawing.Point(20, 37);
             this.tbx_Empt_ID01.Name = "tbx_Empt_ID01";
-            this.tbx_Empt_ID01.Size = new System.Drawing.Size(166, 29);
+            this.tbx_Empt_ID01.Size = new System.Drawing.Size(166, 34);
             this.tbx_Empt_ID01.TabIndex = 4;
             // 
             // label1
@@ -421,7 +421,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 21);
+            this.label1.Size = new System.Drawing.Size(52, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "번호";
             // 
@@ -440,7 +440,7 @@
             this.cbx_dep_code01.FormattingEnabled = true;
             this.cbx_dep_code01.Location = new System.Drawing.Point(19, 361);
             this.cbx_dep_code01.Name = "cbx_dep_code01";
-            this.cbx_dep_code01.Size = new System.Drawing.Size(167, 29);
+            this.cbx_dep_code01.Size = new System.Drawing.Size(167, 36);
             this.cbx_dep_code01.TabIndex = 1;
             // 
             // cbx_mgr_code01
@@ -448,7 +448,7 @@
             this.cbx_mgr_code01.FormattingEnabled = true;
             this.cbx_mgr_code01.Location = new System.Drawing.Point(19, 322);
             this.cbx_mgr_code01.Name = "cbx_mgr_code01";
-            this.cbx_mgr_code01.Size = new System.Drawing.Size(167, 29);
+            this.cbx_mgr_code01.Size = new System.Drawing.Size(167, 36);
             this.cbx_mgr_code01.TabIndex = 0;
             // 
             // tabPage3
@@ -531,7 +531,7 @@
             this.dept_emp_Up_to_date02.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dept_emp_Up_to_date02.Location = new System.Drawing.Point(13, 93);
             this.dept_emp_Up_to_date02.Name = "dept_emp_Up_to_date02";
-            this.dept_emp_Up_to_date02.Size = new System.Drawing.Size(100, 29);
+            this.dept_emp_Up_to_date02.Size = new System.Drawing.Size(100, 34);
             this.dept_emp_Up_to_date02.TabIndex = 4;
             // 
             // asdasdasdsadsad
@@ -539,7 +539,7 @@
             this.asdasdasdsadsad.AutoSize = true;
             this.asdasdasdsadsad.Location = new System.Drawing.Point(13, 59);
             this.asdasdasdsadsad.Name = "asdasdasdsadsad";
-            this.asdasdasdsadsad.Size = new System.Drawing.Size(58, 21);
+            this.asdasdasdsadsad.Size = new System.Drawing.Size(72, 28);
             this.asdasdasdsadsad.TabIndex = 3;
             this.asdasdasdsadsad.Text = "퇴사일";
             // 
@@ -558,7 +558,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(13, 3);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 21);
+            this.label10.Size = new System.Drawing.Size(98, 28);
             this.label10.TabIndex = 1;
             this.label10.Text = "퇴사자 ID";
             // 
@@ -567,7 +567,7 @@
             this.tbx_Empt_ID02.Enabled = false;
             this.tbx_Empt_ID02.Location = new System.Drawing.Point(13, 27);
             this.tbx_Empt_ID02.Name = "tbx_Empt_ID02";
-            this.tbx_Empt_ID02.Size = new System.Drawing.Size(100, 29);
+            this.tbx_Empt_ID02.Size = new System.Drawing.Size(100, 34);
             this.tbx_Empt_ID02.TabIndex = 0;
             // 
             // tabPage2
@@ -611,6 +611,16 @@
             this.dgv_xls_employees.Size = new System.Drawing.Size(799, 505);
             this.dgv_xls_employees.TabIndex = 0;
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(17, 73);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(166, 36);
+            this.button10.TabIndex = 34;
+            this.button10.Text = "저장";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(17, 18);
@@ -621,18 +631,9 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(17, 73);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(166, 36);
-            this.button10.TabIndex = 34;
-            this.button10.Text = "엑셀 반영";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
             // Employees_Mast
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 523);
             this.Controls.Add(this.TabControls);
@@ -641,7 +642,7 @@
             this.Name = "Employees_Mast";
             this.Text = "Employees_Mast";
             this.Load += new System.EventHandler(this.Employees_Mast_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.codeData1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.codeData1)).EndInit();
             this.TabControls.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -683,7 +684,7 @@
         private System.Windows.Forms.DataGridView dgv_employees01;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.DataGridView dgv_employees02;
-        private CodeData codeData1;
+        //private CodeData codeData1;
         private System.Windows.Forms.ComboBox cbx_dep_code01;
         private System.Windows.Forms.ComboBox cbx_mgr_code01;
         private System.Windows.Forms.TextBox tbx_Empt_salary01;

@@ -72,6 +72,7 @@ namespace gudi_project
             col.Visible = visibility;
             dgv.Columns.Add(col);
         }
+
     }
 }
 

@@ -21,7 +21,7 @@ namespace gudi_project
 
         private void Employees_Mast_Load(object sender, EventArgs e)
         {
-            tbx_Empt_salary01.KeyPress +=  UtilEvent.TextBoxIsDigit;
+            tbx_Empt_salary01.KeyPress += UtilEvent.TextBoxIsDigit;
             tbx_Empt_ID01.KeyPress += UtilEvent.TextBoxIsDigit;
             tbx_Empt_name01.KeyPress += UtilEvent.TextBoxNoIsDigit;
 
@@ -60,7 +60,7 @@ namespace gudi_project
             DataTable DeptName = cdb.getCategoryCode("DeptName");
             cdb.Dispose();
 
-            DataRow Mrow =  Manager.insertRow();
+            DataRow Mrow = Manager.insertRow();
             DataRow Drow = DeptName.insertRow();
 
             Mrow["code"] = string.Empty;
@@ -160,7 +160,7 @@ namespace gudi_project
             int col = e.ColumnIndex;
             if (row == -1 || col != 0)
                 return;
-            foreach(DataGridViewRow dgvrow in dgv.Rows)
+            foreach (DataGridViewRow dgvrow in dgv.Rows)
             {
                 if (ckb.Checked)
                 {
@@ -280,7 +280,7 @@ namespace gudi_project
 
 
             EmployeesDB db = new EmployeesDB();
-           
+
             db.update(emp);
             db.Dispose();
             dataLoad();
@@ -304,8 +304,8 @@ namespace gudi_project
         private void button5_Click(object sender, EventArgs e)
         {
             if (tbx_emp_Up_Name01.Text.Trim() == string.Empty || tbx_emp_Up_salary01.Text.Trim() == string.Empty ||
-                dept_emp_Up_to_date01.Value.ToString("yyyy-MM-dd") == string .Empty || cbx_emp_Up_dep01.SelectedValue.ToString() == string.Empty ||
-                cbx_emp_Up_mgr01.SelectedValue.ToString() == string.Empty )
+                dept_emp_Up_to_date01.Value.ToString("yyyy-MM-dd") == string.Empty || cbx_emp_Up_dep01.SelectedValue.ToString() == string.Empty ||
+                cbx_emp_Up_mgr01.SelectedValue.ToString() == string.Empty)
                 return;
 
             employees emp = new employees();
@@ -337,7 +337,7 @@ namespace gudi_project
             db.Dispose();
 
             dataLoad();
-            
+
         }
 
 
@@ -382,16 +382,29 @@ namespace gudi_project
             ndt.Columns.Add(new DataColumn("emp_from_date", typeof(string)));
             ndt.Columns.Add(new DataColumn("emp_to_date", typeof(string)));
             ndt.Columns.Add(new DataColumn("emp_salary", typeof(string)));
-            ndt.Columns.Add(new DataColumn("emp_mgr_name", typeof(string)));
-            ndt.Columns.Add(new DataColumn( "emp_dep_name", typeof(string)));
             ndt.Columns.Add(new DataColumn("emp_mgr_code", typeof(string)));
             ndt.Columns.Add(new DataColumn("emp_dep_code", typeof(string)));
+            ndt.Columns.Add(new DataColumn("mgrname", typeof(string)));
+            ndt.Columns.Add(new DataColumn("depname", typeof(string)));
             excel.Cursor = this.Cursor;
             excel.ImportDatatoExcelnonOleDb(ndt, dgv_xls_employees);
             //dgv_xls_employees.DataSource = ndt;
         }
         #endregion
 
+        #region 엑셀 저장
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (dgv_xls_employees.DataSource == null)
+                return;
+            DataTable table = (DataTable)(dgv_xls_employees.DataSource);
+
+            EmployeesDB db = new EmployeesDB();
+            db.AllDataImportExcel(table);
+            db.Dispose();
+            dataLoad();
+        }
+        #endregion
 
         #endregion
 
@@ -426,5 +439,6 @@ namespace gudi_project
         #endregion
 
         #endregion
+
     }
 }

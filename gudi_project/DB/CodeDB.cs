@@ -30,7 +30,7 @@ namespace gudi_project
             conn.Open();
         }
 
-        #region 코드 확인
+        #region 코드 select
 
         #region  모든 코드값
         public DataTable getAllCode()
@@ -61,6 +61,28 @@ namespace gudi_project
                 string sql = "SELECT code, name FROM code where category = @category";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 setParameters(cmd, MySqlDbType.VarChar, "@category", category);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                int count = da.Fill(dt);
+                if (count == 0)
+                    return null;
+                return dt;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region  pcode 기준
+        public DataTable getPcodeCode(string pcode)
+        {
+            try
+            {
+                string sql = "SELECT code, name FROM code where pcode = @pcode";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                setParameters(cmd, MySqlDbType.VarChar, "@pcode", pcode);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 int count = da.Fill(dt);

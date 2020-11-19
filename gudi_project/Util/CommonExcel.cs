@@ -93,14 +93,17 @@ namespace gudi_project
                     for (int row =3; row <= range.Rows.Count; row++) // 가져온 행 만큼 반복 
                     {
                         DataRow drw = dt.NewRow();
-                        for (int column = 1; column <= range.Columns.Count - 1; column++)
+                        for (int column = 1; column <= drw.Table.Columns.Count; column++)
                         {
-                            string str = (string)(range.Cells[row, column] as Excel.Range).Value2;
+                            string str = Convert.ToString(((range.Cells[row, column] as Excel.Range).Value2));
                             drw[column - 1] = str;
                         }
                         dt.Rows.Add(drw);
                     }
                     dgv.DataSource = dt;
+                    releaseObject(workSheet);
+                    releaseObject(workBook);
+                    releaseObject(excelApp);
                 }
                 finally
                 {
@@ -143,7 +146,8 @@ namespace gudi_project
                 {
                     for (int i = 0; i < dt.Columns.Count; i++)
                     {
-                        xlSheet.Cells[r + 3, i + 1] = dt.Rows[r][i].ToString();
+                        string data = dt.Rows[r][i].ToString();
+                        xlSheet.Cells[r + 3, i + 1] = data;
                     }
                 }
                 xlSheet.Columns.AutoFit();

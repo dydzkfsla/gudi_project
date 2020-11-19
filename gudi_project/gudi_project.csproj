@@ -38,7 +38,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -53,13 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeData.cs">
-      <DependentUpon>CodeData.xsd</DependentUpon>
+    <Compile Include="Bus_Mast.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CodeData.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CodeData.xsd</DependentUpon>
+    <Compile Include="Bus_Mast.Designer.cs">
+      <DependentUpon>Bus_Mast.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\EmployeesDB.cs" />
     <Compile Include="Master\Employees_Mast.cs">
@@ -187,6 +185,9 @@
     </Compile>
     <Compile Include="Util\UtilEvent.cs" />
     <Compile Include="Util\CommonUtil.cs" />
+    <EmbeddedResource Include="Bus_Mast.resx">
+      <DependentUpon>Bus_Mast.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master\Employees_Mast.resx">
       <DependentUpon>Employees_Mast.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,17 +244,6 @@
     <EmbeddedResource Include="UserMain\UserMain.resx">
       <DependentUpon>UserMain.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="CodeData.xsc">
-      <DependentUpon>CodeData.xsd</DependentUpon>
-    </None>
-    <None Include="CodeData.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CodeData.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="CodeData.xss">
-      <DependentUpon>CodeData.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

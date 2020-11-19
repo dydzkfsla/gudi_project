@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,25 @@ namespace gudi_project
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString;
             conn.Open();
         }
+
+        #region select
+        #region bus_info select
+        public DataTable Select()
+        {
+            string sql = @"SELECT bus_info_ID
+, bus_info_make_code, bus_info_model_code
+, bus_info_reght_seat, bus_info_left_seat
+, bus_info_back_seat, bus_info_line_seat FROM bus_info; ";
+
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            da.Fill(dt);
+
+            return dt;
+        }
+        #endregion
+
+        #endregion
 
         #region 좌석 갯수 확인
         public int BusSeat(string BusID)
