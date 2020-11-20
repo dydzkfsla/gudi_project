@@ -53,21 +53,15 @@ namespace gudi_project
             DataLoad();
         }
 
-        private void SetCodeForCbx(ComboBox cbx, DataTable dt)
-        {
-            cbx.ValueMember = "code";
-            cbx.DisplayMember = "name";
-            cbx.DataSource = dt.AsDataView().ToTable();
-        }
 
         #region private 메서드
-        private void SetDgv() 
+        private void SetDgv()
         {
             CommonUtil.SetInitGridView(dataGridView1);
             CommonUtil.SetInitGridView(dataGridView2);
 
             CommonUtil.AddGridTextColumn(dataGridView1, "bus_ID", "bus_ID");
-            CommonUtil.AddGridTextColumn(dataGridView1, "emp_ID", "emp_ID", visibility:false);
+            CommonUtil.AddGridTextColumn(dataGridView1, "emp_ID", "emp_ID", visibility: false);
             CommonUtil.AddGridTextColumn(dataGridView1, "emp_name", "emp_name");
             CommonUtil.AddGridTextColumn(dataGridView1, "bus_info_ID", "bus_info_ID");
             CommonUtil.AddGridTextColumn(dataGridView1, "bus_from_date", "bus_from_date");
@@ -93,7 +87,7 @@ namespace gudi_project
             dataGridView1.DataSource = dt;
 
             Bus_InfoDB infodb = new Bus_InfoDB();
-            dt = infodb.Select();
+            dt = infodb.SelectJoinCode();
             dataGridView2.DataSource = dt;
 
             EmployeesDB db = new EmployeesDB();
@@ -101,6 +95,12 @@ namespace gudi_project
 
         }
 
+        private void SetCodeForCbx(ComboBox cbx, DataTable dt)
+        {
+            cbx.ValueMember = "code";
+            cbx.DisplayMember = "name";
+            cbx.DataSource = dt.AsDataView().ToTable();
+        }
 
         #endregion
 
@@ -110,11 +110,13 @@ namespace gudi_project
         #region bus dgv 더블클릭
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1)
+                return;
             tbx_bus_ID.Text = dataGridView1["bus_ID", e.RowIndex].Value.ToString();
             cbx_emp_ID.SelectedValue = dataGridView1["emp_ID", e.RowIndex].Value.ToString();
             cbx_bus_in_name.SelectedValue = dataGridView1["bus_in_code", e.RowIndex].Value.ToString();
             cbx_bus_info_ID.SelectedValue = dataGridView1["bus_info_ID", e.RowIndex].Value.ToString();
-            dtp_From.Value = Convert.ToDateTime(dataGridView1["bus_from_date", e.RowIndex].Value.ToString()); 
+            dtp_From.Value = Convert.ToDateTime(dataGridView1["bus_from_date", e.RowIndex].Value.ToString());
         }
         #endregion
 
@@ -168,11 +170,11 @@ namespace gudi_project
             DataLoad();
         }
         #endregion
-
         #endregion
 
-        #endregion
+        #region bus_info 관련 이벤트
 
+        #region Make 선택에 따른 model변경 이벤트
         private void cbx_bus_info_make_name_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cbx = (ComboBox)sender;
@@ -183,5 +185,88 @@ namespace gudi_project
             cdb.Dispose();
             SetCodeForCbx(cbx_bus_info_model_name, model);
         }
+        #endregion
+
+        #region dgv_bus_info_더블클릭 이벤트
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+
+            tbx_bus_info_ID.Text = dataGridView2["bus_info_ID", e.RowIndex].Value.ToString();
+            tbx_bus_info_left_seat.Text = dataGridView2["bus_info_left_seat", e.RowIndex].Value.ToString();
+            tbx_bus_info_reght_seat.Text = dataGridView2["bus_info_reght_seat", e.RowIndex].Value.ToString();
+            tbx_bus_info_line_seat.Text = dataGridView2["bus_info_line_seat", e.RowIndex].Value.ToString();
+            tbx_bus_info_back_seat.Text = dataGridView2["bus_info_back_seat", e.RowIndex].Value.ToString();
+            cbx_bus_info_make_name.SelectedValue = dataGridView2["bus_info_make_code", e.RowIndex].Value.ToString();
+            cbx_bus_info_model_name.SelectedValue = dataGridView2["bus_info_model_code", e.RowIndex].Value.ToString();
+
+        }
+        #endregion
+
+        #region 추가
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Bus_Info bus_Info = new Bus_Info();
+            bus_Info.bus_info_ID = tbx_bus_info_ID.Text;
+            bus_Info.bus_info_left_seat = int.Parse(tbx_bus_info_left_seat.Text);
+            bus_Info.bus_info_reght_seat = int.Parse(tbx_bus_info_reght_seat.Text);
+            bus_Info.bus_info_line_seat = int.Parse(tbx_bus_info_line_seat.Text);
+            bus_Info.bus_info_back_seat = int.Parse(tbx_bus_info_back_seat.Text);
+            bus_Info.bus_info_make_code = cbx_bus_info_make_name.SelectedValue.ToString();
+            bus_Info.bus_info_model_code = cbx_bus_info_model_name.SelectedValue.ToString();
+
+            Bus_InfoDB db = new Bus_InfoDB();
+            db.insert(bus_Info);
+            db.Dispose();
+            DataLoad();
+        }
+        #endregion
+
+        #region 수정
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (tbx_bus_info_ID.Text == string.Empty)
+                return;
+            Bus_Info bus_Info = new Bus_Info();
+            bus_Info.bus_info_ID = tbx_bus_info_ID.Text;
+            bus_Info.bus_info_left_seat = int.Parse(tbx_bus_info_left_seat.Text);
+            bus_Info.bus_info_reght_seat = int.Parse(tbx_bus_info_reght_seat.Text);
+            bus_Info.bus_info_line_seat = int.Parse(tbx_bus_info_line_seat.Text);
+            bus_Info.bus_info_back_seat = int.Parse(tbx_bus_info_back_seat.Text);
+            bus_Info.bus_info_make_code = cbx_bus_info_make_name.SelectedValue.ToString();
+            bus_Info.bus_info_model_code = cbx_bus_info_model_name.SelectedValue.ToString();
+
+            Bus_InfoDB db = new Bus_InfoDB();
+            db.update(bus_Info);
+            db.Dispose();
+            DataLoad();
+        }
+        #endregion
+
+        #region 삭제
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (tbx_bus_info_ID.Text == string.Empty)
+                return;
+            Bus_Info bus_Info = new Bus_Info();
+            bus_Info.bus_info_ID = tbx_bus_info_ID.Text;
+            bus_Info.bus_info_left_seat = int.Parse(tbx_bus_info_left_seat.Text);
+            bus_Info.bus_info_reght_seat = int.Parse(tbx_bus_info_reght_seat.Text);
+            bus_Info.bus_info_line_seat = int.Parse(tbx_bus_info_line_seat.Text);
+            bus_Info.bus_info_back_seat = int.Parse(tbx_bus_info_back_seat.Text);
+            bus_Info.bus_info_make_code = cbx_bus_info_make_name.SelectedValue.ToString();
+            bus_Info.bus_info_model_code = cbx_bus_info_model_name.SelectedValue.ToString();
+
+            Bus_InfoDB db = new Bus_InfoDB();
+            db.delete(bus_Info);
+            db.Dispose();
+            DataLoad();
+        }
+        #endregion
+
+        #endregion
+
+        #endregion
     }
 }

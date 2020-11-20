@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -71,6 +75,41 @@ namespace gudi_project
             col.DefaultCellStyle.Alignment = textAlign;
             col.Visible = visibility;
             dgv.Columns.Add(col);
+        }
+
+        public static void AddGridImageColumn(
+                                DataGridView dgv,
+                                string headerText,
+                                string dataPropertyName,
+                                int colWidth = 100,
+                                bool visibility = true,
+                                DataGridViewContentAlignment textAlign = DataGridViewContentAlignment.MiddleLeft)
+        {
+            DataGridViewImageColumn col = new DataGridViewImageColumn();
+            col.Name = dataPropertyName;
+            col.HeaderText = headerText;
+            col.Width = colWidth;
+            col.DefaultCellStyle.Alignment = textAlign;
+            //col.DataPropertyName = dataPropertyName;
+            col.Visible = visibility;
+            dgv.Columns.Add(col);
+        }
+
+        public static Bitmap WebImageView(string URL)
+        {
+            try
+            {
+                WebClient Downloader = new WebClient();
+                Stream ImageStream = Downloader.OpenRead(URL);
+                Bitmap DownloadImage = Bitmap.FromStream(ImageStream) as Bitmap;
+                return DownloadImage;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+
         }
 
     }

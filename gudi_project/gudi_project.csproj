@@ -38,7 +38,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -65,6 +65,12 @@
     </Compile>
     <Compile Include="Master\Employees_Mast.Designer.cs">
       <DependentUpon>Employees_Mast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Travel_Mast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Travel_Mast.Designer.cs">
+      <DependentUpon>Travel_Mast.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\ExtenstionMethod.cs" />
     <Compile Include="Master\Code_Mast.cs">
@@ -129,8 +135,8 @@
       <DependentUpon>ColorTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\CodeDB.cs" />
-    <Compile Include="Email.cs" />
-    <Compile Include="Event.cs" />
+    <Compile Include="Util\Email.cs" />
+    <Compile Include="Util\Event.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Master_Mainfrm.resx">
       <DependentUpon>Master_Mainfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Travel_Mast.resx">
+      <DependentUpon>Travel_Mast.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\AllTravel.resx">
       <DependentUpon>AllTravel.cs</DependentUpon>

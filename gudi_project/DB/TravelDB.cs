@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,6 @@ namespace gudi_project
     public class Travel
     {
         public string trv_ID { get; set; }
-        public string trv_info_ID { get; set; }
         public string trv_name { get; set; }
         public string trv_addr { get; set; }
         public string trv_data { get; set; }
@@ -60,7 +60,6 @@ namespace gudi_project
                 {
                     Travel temp = new Travel();
                     temp.trv_ID = reader.GetInt32("trv_ID").ToString();
-                    temp.trv_info_ID = reader.GetInt32("trv_info_ID").ToString();
                     temp.trv_name = reader.GetString("trv_name");
                     temp.trv_addr = reader.GetString("trv_addr");
                     temp.trv_data = reader.GetString("trv_data");
@@ -80,6 +79,34 @@ namespace gudi_project
 
         }
 
+        #region select
+        public List<Travel> selectlimit()
+        {
+            string sql = "SELECT * FROM gudi06.travel limit 5";
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            da.Fill(dt);
+            List<Travel> temp = new List<Travel>();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Travel travel = new Travel
+                {
+                    trv_ID = dr["trv_ID"].ToString(),
+                    trv_name = dr["trv_name"].ToString(),
+                    trv_addr = dr["trv_addr"].ToString(),
+                    trv_data = dr["trv_data"].ToString(),
+                    trv_img = dr["trv_img"].ToString(),
+                    trv_tel = dr["trv_tel"].ToString(),
+                    trv_lat = Convert.ToDouble(dr["trv_lat"]),
+                    trv_lng = Convert.ToDouble(dr["trv_lng"])
+                };
+                temp.Add(travel);
+            }
+
+            return temp.Count == 0 ? null : temp;
+        }
+        #endregion
         #region 파라미터 설정
         private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)
         {

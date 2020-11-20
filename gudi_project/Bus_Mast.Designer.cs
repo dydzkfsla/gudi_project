@@ -48,6 +48,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.tbx_bus_info_line_seat = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbx_bus_info_back_seat = new System.Windows.Forms.TextBox();
@@ -282,6 +285,9 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.button6);
+            this.splitContainer2.Panel2.Controls.Add(this.button5);
+            this.splitContainer2.Panel2.Controls.Add(this.button4);
             this.splitContainer2.Panel2.Controls.Add(this.tbx_bus_info_line_seat);
             this.splitContainer2.Panel2.Controls.Add(this.label11);
             this.splitContainer2.Panel2.Controls.Add(this.tbx_bus_info_back_seat);
@@ -297,7 +303,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.label11111);
             this.splitContainer2.Panel2.Controls.Add(this.label10);
             this.splitContainer2.Size = new System.Drawing.Size(808, 456);
-            this.splitContainer2.SplitterDistance = 272;
+            this.splitContainer2.SplitterDistance = 399;
             this.splitContainer2.SplitterWidth = 10;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -307,8 +313,39 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(272, 456);
+            this.dataGridView2.Size = new System.Drawing.Size(399, 456);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(219, 149);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(92, 29);
+            this.button6.TabIndex = 33;
+            this.button6.Text = "수정";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(219, 93);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 29);
+            this.button5.TabIndex = 32;
+            this.button5.Text = "삭제";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(219, 35);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(92, 29);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "추가";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // tbx_bus_info_line_seat
             // 
@@ -496,5 +533,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11111;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }
