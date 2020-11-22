@@ -134,6 +134,23 @@ namespace gudi_project
 
         #endregion
 
+        #region 매출 정보
+        public DataTable Getsales(string from_date, string to_date)
+        {
+            string sql = @"call da(@from_date,@to_date);";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.SelectCommand.Parameters.Add("@from_date", MySqlDbType.VarChar);
+            da.SelectCommand.Parameters["@from_date"].Value = from_date;
+            da.SelectCommand.Parameters.Add("@to_date", MySqlDbType.VarChar);
+            da.SelectCommand.Parameters["@to_date"].Value = to_date;
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        #endregion
+
         #region 파라미터 설정
         private void setParameters(MySqlCommand cmd, MySqlDbType type, string ParamName, string ParamValue)
         {

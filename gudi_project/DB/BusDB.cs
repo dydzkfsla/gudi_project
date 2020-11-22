@@ -41,6 +41,16 @@ namespace gudi_project
             cmd.Fill(dt);
             return dt;
         }
+
+        public DataTable SelectID()
+        {
+            string sql = @"SELECT bus_ID FROM bus";
+            MySqlDataAdapter cmd = new MySqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            cmd.Fill(dt);
+            return dt;
+        }
+
         #endregion
 
         #region insert

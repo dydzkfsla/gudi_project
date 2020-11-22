@@ -88,9 +88,8 @@ namespace gudi_project
             DataGridViewImageColumn col = new DataGridViewImageColumn();
             col.Name = dataPropertyName;
             col.HeaderText = headerText;
-            col.Width = colWidth;
-            col.DefaultCellStyle.Alignment = textAlign;
-            //col.DataPropertyName = dataPropertyName;
+            col.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            col.DataPropertyName = dataPropertyName;
             col.Visible = visibility;
             dgv.Columns.Add(col);
         }
@@ -111,7 +110,23 @@ namespace gudi_project
             }
 
         }
+        /*
+        public void OpenCreateForm<T>() where T : Form, new()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(T))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
 
+            T frm = new T();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+        */
     }
 }
 

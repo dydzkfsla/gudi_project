@@ -38,10 +38,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,10 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bus_Mast.cs">
+    <Compile Include="Master\Bus_Mast.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bus_Mast.Designer.cs">
+    <Compile Include="Master\Bus_Mast.Designer.cs">
       <DependentUpon>Bus_Mast.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\EmployeesDB.cs" />
@@ -66,10 +67,17 @@
     <Compile Include="Master\Employees_Mast.Designer.cs">
       <DependentUpon>Employees_Mast.cs</DependentUpon>
     </Compile>
-    <Compile Include="Travel_Mast.cs">
+    <Compile Include="Master\sales_Mast.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Travel_Mast.Designer.cs">
+    <Compile Include="Master\sales_Mast.Designer.cs">
+      <DependentUpon>sales_Mast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\test.cs" />
+    <Compile Include="Master\Travel_Mast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\Travel_Mast.Designer.cs">
       <DependentUpon>Travel_Mast.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\ExtenstionMethod.cs" />
@@ -191,7 +199,7 @@
     </Compile>
     <Compile Include="Util\UtilEvent.cs" />
     <Compile Include="Util\CommonUtil.cs" />
-    <EmbeddedResource Include="Bus_Mast.resx">
+    <EmbeddedResource Include="Master\Bus_Mast.resx">
       <DependentUpon>Bus_Mast.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master\Employees_Mast.resx">
@@ -203,7 +211,10 @@
     <EmbeddedResource Include="Master\Master_Mainfrm.resx">
       <DependentUpon>Master_Mainfrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Travel_Mast.resx">
+    <EmbeddedResource Include="Master\sales_Mast.resx">
+      <DependentUpon>sales_Mast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\Travel_Mast.resx">
       <DependentUpon>Travel_Mast.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\AllTravel.resx">

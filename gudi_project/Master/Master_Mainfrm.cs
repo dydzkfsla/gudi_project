@@ -42,5 +42,47 @@ namespace gudi_project
         {
             this.Close();
         }
+
+        private void busMastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenCreateForm<Bus_Mast>();
+        }
+
+        private void codeMastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenCreateForm<Code_Mast>();
+        }
+
+        private void employeesMastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenCreateForm<Employees_Mast>();
+        }
+
+        private void travelMastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenCreateForm<Travel_Mast>();
+        }
+
+        private void salesMastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenCreateForm<sales_Mast>();
+        }
+
+
+        private void OpenCreateForm<T>() where T : Form, new()
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(T))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
+            T frm = new T();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

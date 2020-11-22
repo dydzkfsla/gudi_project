@@ -61,6 +61,21 @@ namespace gudi_project
         }
         #endregion
 
+        #region 정비사 직원 확인
+        public DataTable Getdepeployess(string depcode)
+        {
+            string sql = @"select emp_ID , emp_name from employees
+                            where emp_dep_code = @emp_dep_code;";
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            da.SelectCommand.Parameters.Add("@emp_dep_code", MySqlDbType.VarChar);
+            da.SelectCommand.Parameters["@emp_dep_code"].Value = depcode;
+            da.Fill(dt);
+
+            return dt;
+        }
+        #endregion
+
 
         #endregion
 
