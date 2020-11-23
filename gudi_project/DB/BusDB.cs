@@ -56,16 +56,23 @@ namespace gudi_project
         #region insert
         public bool insert(Bus bus)
         {
-            string sql = @"insert into bus(emp_ID, bus_info_ID, bus_from_date, bus_in_code) 
+            try
+            {
+                string sql = @"insert into bus(emp_ID, bus_info_ID, bus_from_date, bus_in_code) 
                            values (@emp_ID, @bus_info_ID, @bus_from_date, @bus_in_code);";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-            setParameters(cmd, MySqlDbType.Int32, "@emp_ID", bus.emp_ID);
-            setParameters(cmd, MySqlDbType.Int32, "@bus_info_ID", bus.bus_info_ID);
-            setParameters(cmd, MySqlDbType.VarChar, "@bus_from_date", bus.bus_from_date);
-            setParameters(cmd, MySqlDbType.VarChar, "@bus_in_code", bus.bus_in_code);
+                setParameters(cmd, MySqlDbType.Int32, "@emp_ID", bus.emp_ID);
+                setParameters(cmd, MySqlDbType.Int32, "@bus_info_ID", bus.bus_info_ID);
+                setParameters(cmd, MySqlDbType.VarChar, "@bus_from_date", bus.bus_from_date);
+                setParameters(cmd, MySqlDbType.VarChar, "@bus_in_code", bus.bus_in_code);
 
-            return cmd.ExecuteNonQuery() == 0 ? false : true;
+                return cmd.ExecuteNonQuery() == 0 ? false : true;
+            }
+            catch (Exception) 
+            {
+                return false;
+            }
 
         }
         #endregion
@@ -73,20 +80,27 @@ namespace gudi_project
         #region update
         public bool update(Bus bus)
         {
-            string sql = @"update bus set emp_ID = @emp_ID
+            try
+            {
+                string sql = @"update bus set emp_ID = @emp_ID
 		,bus_info_ID= @bus_info_ID
 		,bus_from_date = @bus_from_date
         ,bus_in_code = @bus_in_code
         where bus_ID = @bus_ID;";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-            setParameters(cmd, MySqlDbType.Int32, "@bus_ID", bus.bus_ID);
-            setParameters(cmd, MySqlDbType.Int32, "@emp_ID", bus.emp_ID);
-            setParameters(cmd, MySqlDbType.Int32, "@bus_info_ID", bus.bus_info_ID);
-            setParameters(cmd, MySqlDbType.VarChar, "@bus_from_date", bus.bus_from_date);
-            setParameters(cmd, MySqlDbType.VarChar, "@bus_in_code", bus.bus_in_code);
+                setParameters(cmd, MySqlDbType.Int32, "@bus_ID", bus.bus_ID);
+                setParameters(cmd, MySqlDbType.Int32, "@emp_ID", bus.emp_ID);
+                setParameters(cmd, MySqlDbType.Int32, "@bus_info_ID", bus.bus_info_ID);
+                setParameters(cmd, MySqlDbType.VarChar, "@bus_from_date", bus.bus_from_date);
+                setParameters(cmd, MySqlDbType.VarChar, "@bus_in_code", bus.bus_in_code);
 
-            return cmd.ExecuteNonQuery() == 0 ? false : true;
+                return cmd.ExecuteNonQuery() == 0 ? false : true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
         }
         #endregion
@@ -94,12 +108,19 @@ namespace gudi_project
         #region delete
         public bool delete(Bus bus)
         {
-            string sql = @"delete from bus where bus_ID = @bus_ID";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            try
+            {
+                string sql = @"delete from bus where bus_ID = @bus_ID";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-            setParameters(cmd, MySqlDbType.Int32, "@bus_ID", bus.bus_ID);
+                setParameters(cmd, MySqlDbType.Int32, "@bus_ID", bus.bus_ID);
 
-            return cmd.ExecuteNonQuery() == 0 ? false : true;
+                return cmd.ExecuteNonQuery() == 0 ? false : true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
         }
         #endregion

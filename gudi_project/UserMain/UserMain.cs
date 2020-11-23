@@ -15,6 +15,8 @@ namespace gudi_project
 {
     public partial class UserMain : Form
     {
+        int max = 0;
+        int count = 0;
         private static UserMain frm = null;
         private System.Windows.Forms.UserInfoPanel UserInfoPanel;
         private Maintravel_info Maintravel_infoPanel = null;
@@ -41,6 +43,7 @@ namespace gudi_project
 
         private void UserMain_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             Travel_infoDB infoDB = new Travel_infoDB();
             info = infoDB.MainTravel();
             if(info != null)
@@ -62,6 +65,7 @@ namespace gudi_project
             infoDB.Dispose();
 
             tbc_MainTrInfo.SelectedIndex = 0;
+            max = tbc_MainTrInfo.TabPages.Count;
         }
 
         private void cToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,6 +156,14 @@ namespace gudi_project
         private void UserMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             //Form form =   this.Owner;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            count++;
+            int select = count % max;
+
+            tbc_MainTrInfo.SelectedTab = tbc_MainTrInfo.TabPages[select];
         }
     }
 }

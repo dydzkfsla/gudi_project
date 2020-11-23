@@ -72,17 +72,23 @@ on bus_info.bus_info_make_code = c1.code and bus_info.bus_info_model_code = c2.c
         #region insert
         public bool insert(Bus_Info temp)
         {
-            string sql = @"insert into bus_info(bus_info_make_code, bus_info_model_code, bus_info_reght_seat, bus_info_left_seat, bus_info_back_seat, bus_info_line_seat)
+            try
+            {
+                string sql = @"insert into bus_info(bus_info_make_code, bus_info_model_code, bus_info_reght_seat, bus_info_left_seat, bus_info_back_seat, bus_info_line_seat)
     values(@bus_info_make_code, @bus_info_model_code, @bus_info_reght_seat, @bus_info_left_seat, @bus_info_back_seat, @bus_info_line_seat)";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.setParameters(MySqlDbType.VarChar, "@bus_info_make_code", temp.bus_info_make_code);
-            cmd.setParameters(MySqlDbType.VarChar, "@bus_info_model_code", temp.bus_info_model_code);
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_reght_seat", temp.bus_info_reght_seat.ToString());
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_left_seat", temp.bus_info_left_seat.ToString());
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_back_seat", temp.bus_info_back_seat.ToString());
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_line_seat", temp.bus_info_line_seat.ToString());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.setParameters(MySqlDbType.VarChar, "@bus_info_make_code", temp.bus_info_make_code);
+                cmd.setParameters(MySqlDbType.VarChar, "@bus_info_model_code", temp.bus_info_model_code);
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_reght_seat", temp.bus_info_reght_seat.ToString());
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_left_seat", temp.bus_info_left_seat.ToString());
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_back_seat", temp.bus_info_back_seat.ToString());
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_line_seat", temp.bus_info_line_seat.ToString());
 
-            return cmd.ExecuteNonQuery() == 0 ? false : true;
+                return cmd.ExecuteNonQuery() == 0 ? false : true;
+            }catch(Exception err)
+            {
+                return false;
+            }
             
         }
         #endregion
@@ -90,7 +96,9 @@ on bus_info.bus_info_make_code = c1.code and bus_info.bus_info_model_code = c2.c
         #region update
         public bool update(Bus_Info temp)
         {
-            string sql = @"update bus_info 
+            try
+            {
+                string sql = @"update bus_info 
 set bus_info_make_code = @bus_info_make_code
 , bus_info_model_code = @bus_info_model_code
 , bus_info_reght_seat = @bus_info_reght_seat
@@ -99,28 +107,39 @@ set bus_info_make_code = @bus_info_make_code
 , bus_info_line_seat = @bus_info_line_seat
 where bus_info_ID = @bus_info_ID";
 
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.setParameters(MySqlDbType.VarChar, "@bus_info_make_code", temp.bus_info_make_code);
-            cmd.setParameters(MySqlDbType.VarChar, "@bus_info_model_code", temp.bus_info_model_code);
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_reght_seat", temp.bus_info_reght_seat.ToString());
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_left_seat", temp.bus_info_left_seat.ToString());
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_back_seat", temp.bus_info_back_seat.ToString());
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_line_seat", temp.bus_info_line_seat.ToString());
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_ID", temp.bus_info_ID.ToString());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.setParameters(MySqlDbType.VarChar, "@bus_info_make_code", temp.bus_info_make_code);
+                cmd.setParameters(MySqlDbType.VarChar, "@bus_info_model_code", temp.bus_info_model_code);
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_reght_seat", temp.bus_info_reght_seat.ToString());
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_left_seat", temp.bus_info_left_seat.ToString());
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_back_seat", temp.bus_info_back_seat.ToString());
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_line_seat", temp.bus_info_line_seat.ToString());
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_ID", temp.bus_info_ID.ToString());
 
-            return cmd.ExecuteNonQuery() == 0 ? false : true;
-
+                return cmd.ExecuteNonQuery() == 0 ? false : true;
+            }
+            catch (Exception err)
+            {
+                return false;
+            }
+            
         }
         #endregion
 
         #region delete
         public bool delete(Bus_Info temp)
         {
-            string sql = "delete from bus_info where bus_info_ID = @bus_info_ID;";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            cmd.setParameters(MySqlDbType.Int32, "@bus_info_ID", temp.bus_info_ID);
+            try
+            {
+                string sql = "delete from bus_info where bus_info_ID = @bus_info_ID;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.setParameters(MySqlDbType.Int32, "@bus_info_ID", temp.bus_info_ID);
 
-            return cmd.ExecuteNonQuery() == 0 ? false: true;
+                return cmd.ExecuteNonQuery() == 0 ? false : true;
+            }catch(Exception err)
+            {
+                return false;
+            }
         }
         #endregion
 

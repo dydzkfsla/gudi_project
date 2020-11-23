@@ -130,6 +130,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(362, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(149, 142);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
@@ -177,7 +178,7 @@
         private System.Windows.Forms.Label lbl_seat;
         private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.Label lbl_trv_name;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
